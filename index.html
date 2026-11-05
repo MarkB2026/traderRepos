@@ -61,9 +61,7 @@ html{color-scheme:dark}body{background:#0b111c!important;color:#e6edf3!important
    if(!card.hidden)shown++;
   }
   battle.classList.toggle('active',designation==='battle');
-  autonomous.classList.toggle('active',designation==='autonomous');
   battle.setAttribute('aria-pressed',String(designation==='battle'));
-  autonomous.setAttribute('aria-pressed',String(designation==='autonomous'));
   const scope=designation==='battle'?'Battle Tested':category.options[category.selectedIndex].text.split(' — ')[0];
   count.textContent=`Showing ${shown} ${scope} application${shown===1?'':'s'}`;
   empty.hidden=shown!==0;
@@ -75,7 +73,6 @@ html{color-scheme:dark}body{background:#0b111c!important;color:#e6edf3!important
   update();
  }
  battle.addEventListener('click',()=>chooseDesignation('battle'));
- autonomous.addEventListener('click',()=>chooseDesignation('autonomous'));
  category.addEventListener('change',()=>{designation='';update()});
  search.addEventListener('input',update);
  search.addEventListener('search',update);
