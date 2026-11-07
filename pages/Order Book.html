@@ -70,6 +70,42 @@ html body a.btn,html body .slide-link{color:#315b77!important}
 .orderbook-action:hover{background:#b5d1e3;color:#214760!important}
 .orderbook-action.secondary{background:#f5f9fc}
 @media(max-width:650px){.orderbook-compat-grid{grid-template-columns:1fr}.orderbook-compat,.orderbook-checkout{padding:18px}}
+</style><style id="orderbook-matching-ifthen-footer">.momentum-benefits{margin:18px 0 0;border:1px solid #30475c;border-radius:12px;padding:16px;background:#111f2e}
+.momentum-benefits h3{margin:0 0 12px;font-size:17px;letter-spacing:.04em}
+.momentum-benefit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.momentum-benefit{border:1px solid #30475c;border-radius:9px;padding:13px 10px;background:#0b1928}
+.momentum-benefit .symbol{color:#58bdfb;font-size:20px;line-height:1;margin-bottom:9px}
+.momentum-benefit strong{display:block;color:#f4f8fc;font-size:13px;margin-bottom:6px}
+.momentum-benefit small{display:block;color:#a9c2d5;font-size:12px;line-height:1.45}
+.momentum-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.momentum-benefit-grid{grid-template-columns:1fr 1fr}
+.momentum-benefit{padding:10px 8px}
+.expanded-details,.battle-panel,.battle-detail,.tr-compat,.panel,.bot-video-gallery,.gallery,.feature,.features>div,.momentum-benefits,.momentum-spec-compact{
+background:var(--panel)!important;color:var(--text)!important;border-color:var(--border)!important;box-shadow:0 2px 9px #56758b12!important}
+.spec-item,.momentum-chip,.momentum-benefit,.tr-platform-card,.tr-os-unavailable,.bot-video-item,.feature,.status,.badge{
+background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
+.expanded-details p,.expanded-details li,.battle-detail p,.battle-panel p,.bot-video-gallery p,.feature p,.momentum-benefit p,.tr-platform-copy small,.tr-os-unavailable span,.tr-compat .tr-muted{
+color:var(--muted)!important}
+.spec-item strong,.tr-platform-copy strong,.momentum-benefit strong,.bot-video-caption,.tr-compat strong{color:#314e61!important}
+.slide-link,.btn,.button,a.btn{background:#d3e4f0!important;border:1px solid #a7c0d2!important;color:#315b77!important;box-shadow:none!important}
+.slide-link:hover,.btn:hover,.button:hover,a.btn:hover{background:#c1d8e8!important;color:#254d68!important}
+html body .expanded-details,html body .battle-panel,html body .battle-detail,
+html body .bot-video-gallery,html body .momentum-benefits,html body .panel,
+html body .tr-compat{color:#30495b!important}
+html body .expanded-details p,html body .expanded-details li,
+html body .bot-video-gallery p,html body .momentum-benefits p,
+html body .momentum-benefit p,html body .panel p,
+html body .tr-compat p,html body .feature p{color:#536e80!important}
+html body a.btn,html body .slide-link{color:#315b77!important}
+/* Match the light blue-grey If/Then lower feature and checkout panels */
+main>.momentum-benefits,main>.panel{margin:20px 0;padding:21px 24px;border:1px solid #c1d1dd;border-radius:11px;background:#e2ebf2!important;color:#304758!important}
+main>.momentum-benefits h3,main>.panel h2{color:#29495e!important}
+main>.momentum-benefits .momentum-benefit{background:#f8fbfd!important;border:1px solid #c1d1dd!important;border-radius:8px;padding:14px!important;color:#304758!important}
+main>.momentum-benefits .momentum-benefit strong{color:#304758!important}
+main>.momentum-benefits .momentum-benefit small,main>.panel p{color:#5f7789!important}
+main>.momentum-benefits .symbol{color:#5287a8!important}
+main>.panel a.btn{display:inline-flex;margin:6px 8px 0 0;padding:11px 15px;background:#c7dce9!important;border:1px solid #a4c0d2!important;border-radius:7px;color:#2d5774!important;text-decoration:none;font-weight:700}
+main>.panel a.btn:hover{background:#b6d1e2!important}
 </style></head><body>
 <header><div class="wrap head"><a class="brand" href="../index.html"><b>&lt;/&gt;</b> trader repository</a><nav class="nav"><a href="../index.html">Repository</a><a href="../basic.html">Checkout</a><a href="../packages.html">Packages</a></nav></div></header>
 <main class="wrap"><div class="eyebrow">REPOSITORY / PRODUCTS / ORDER BOOK</div>
@@ -79,5 +115,10 @@ html body a.btn,html body .slide-link{color:#315b77!important}
 <section aria-label="Order Book video gallery" class="gallery"><h2>Video gallery</h2><p>Watch Order Book in action. Play the demonstration below or expand it to fullscreen.</p>
 <video aria-label="Order Book demonstration" controls="" playsinline="" preload="metadata"><source src="../videos/orderbook-Screen Recording 2026-11-07 042405.mp4" type="video/mp4"/>Your browser does not support MP4 video.</video>
 <div class="caption">Order Book — Visual ticket editor demonstration</div></section>
-<p class="note">Beta development build: broker order submission remains disabled while ticket and order-line validation is tested.</p><section aria-label="Order Book compatibility" class="orderbook-compat"><h2>Compatibility &amp; availability</h2><p>Order Book is a Windows desktop beta designed for use with Interactive Brokers (IBKR). Order submission is disabled in this development build; check the checkout page for current download availability.</p><div class="orderbook-compat-grid"><div class="orderbook-compat-item"><span>Operating system</span><strong>Windows 10 / 11 · 64-bit</strong></div><div class="orderbook-compat-item"><span>Broker integration</span><strong>Interactive Brokers (IBKR)</strong></div><div class="orderbook-compat-item"><span>Release status</span><strong>Beta · visual order planning</strong></div><div class="orderbook-compat-item"><span>Live order submission</span><strong>Disabled in this development build</strong></div></div></section><section aria-label="Checkout and repository navigation" class="orderbook-checkout"><h2>Download &amp; checkout</h2><p>Browse current releases and download options in the existing checkout page, or return to the repository.</p><a class="orderbook-action" href="../basic.html">Go to checkout →</a><a class="orderbook-action secondary" href="../index.html">← Back to repository</a></section></main>
+<p class="note">Beta development build: broker order submission remains disabled while ticket and order-line validation is tested.</p><section aria-label="Why download If/Then" class="momentum-benefits"><h3>YOUR SOFTWARE. YOUR COMPUTER.</h3><div class="momentum-benefit-grid">
+<div class="momentum-benefit"><div class="symbol">↓</div><strong>Download &amp; Run</strong><small>Run directly on your Windows PC.</small></div>
+<div class="momentum-benefit"><div class="symbol">☁̸</div><strong>No Cloud Required</strong><small>Your bot runs locally, not on our servers.</small></div>
+<div class="momentum-benefit"><div class="symbol">⚙</div><strong>Your Trading Setup</strong><small>Your configurations stay on your computer.</small></div>
+<div class="momentum-benefit"><div class="symbol">◇</div><strong>Yours to Keep</strong><small>Buy once. Own forever. No subscriptions.</small></div>
+</div></section><section class="panel"><h2>Download &amp; checkout</h2><p>Product selection, purchase, licensing and downloads remain in the existing checkout page.</p><a class="btn" href="../basic.html">Go to checkout →</a><a class="btn secondary" href="../index.html">← All software</a></section></main>
 <footer><div class="wrap">Trader Repository · Trading software repository</div></footer></body></html>
