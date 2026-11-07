@@ -688,7 +688,49 @@ footer,.install-footnote{background:#e5eef4!important;color:#647d8f!important}
  .tr-compat .tr-platform-copy small,.tr-compat .tr-os-unavailable span{color:#5e788a!important}
  .tr-compat .tr-platform-card.broker .tr-platform-icon{background:#fff!important}
  .category-info-description{color:#516e82!important;background:#f4f9fc!important;border-color:#b9cdda!important}
- </style></head><body>
+ </style><style id="basic-final-contrast-fix-logo-coming-soon-total">
+/* Final legibility pass: original dark-theme selectors retained high specificity. */
+.repo-wordmark,.repo-wordmark span:not(.pages-logo-mark),.repo-wordmark b,.repo-wordmark small,
+.topbar .repo-wordmark,.topbar .repo-wordmark b,.topbar .repo-wordmark small{
+ color:#31536b!important;text-shadow:none!important;opacity:1!important}
+.repo-wordmark b{color:#477fa3!important}
+.repo-wordmark small{color:#688599!important}
+.repo-wordmark .pages-logo-mark{color:#5087a9!important}
+.coming-soon-label,.bot-card .coming-soon-label,.bot-list-entry .coming-soon-label,
+#other .coming-soon-label,#premium .coming-soon-label,
+.coming-soon,.status.coming-soon{
+ background:#c6d9e7!important;color:#355c78!important;
+ border:1px solid #92b2c7!important;opacity:1!important;text-shadow:none!important}
+#selectedList .download-cart-total,#selectedList .download-cart-total strong,
+#selectedList .download-cart-row b,#selectedList .download-cart-row small,
+#purchaseCart .download-cart-total,#purchaseCart .download-cart-total strong,
+#purchaseCart .download-cart-row b,#purchaseCart .download-cart-row small{
+ color:#31536b!important;opacity:1!important;text-shadow:none!important}
+#purchaseCart .download-cart-total{border-top:1px solid #a5bdce!important}
+#purchaseCart .download-cart-row{border-bottom-color:#b5c9d8!important}
+#purchaseCart .note,#purchaseCart .box .note{color:#5d778a!important}
+</style><style id="symbol-clash-whole-feature-highlight">
+/* Symbol Clash Protection: emphasize the complete feature, not only ownership.json. */
+#premium .ownership-feature,.ownership-feature{
+ background:linear-gradient(115deg,#c5dbe9 0%,#d8e8f2 100%)!important;
+ border:2px solid #5b91b3!important;
+ border-left:7px solid #367aa6!important;
+ box-shadow:0 9px 26px rgba(49,94,126,.20),0 2px 5px rgba(49,94,126,.12)!important;
+ padding:24px 26px!important;
+ border-radius:14px!important;
+}
+.ownership-feature h3{color:#174f73!important;font-size:clamp(24px,2.7vw,32px)!important}
+.ownership-feature p,.ownership-feature .ownership-note{color:#3e6179!important}
+.ownership-feature .ownership-caption strong{color:#1c668f!important}
+.ownership-feature .ownership-bot{background:#eef6fb!important;border:1px solid #8aafc7!important;color:#254e69!important}
+.ownership-feature .ownership-bot small{color:#557c96!important}
+.ownership-feature .ownership-registry{background:#f5faff!important;border:2px solid #74a1bd!important;box-shadow:0 3px 12px #426c881c!important}
+.ownership-feature .ownership-file{color:#1b587e!important;font-weight:900!important}
+.ownership-feature .ownership-code{color:#2b5875!important}
+.ownership-feature .ownership-status{color:#236a59!important;border-color:#b1cbd9!important}
+.ownership-feature .ownership-arrow{color:#317ca7!important}
+@media(max-width:780px){#premium .ownership-feature,.ownership-feature{padding:19px!important}}
+</style></head><body>
 <header class="topbar"><div class="wrap nav"><a aria-label="Trader Repository homepage" class="repo-wordmark" href="index.html"><span class="pages-logo-mark">&lt;/&gt;</span> <span>trader <b>repository</b><small>// trading software for download</small></span></a><nav class="links"><a href="index.html">Repository</a><a href="#free">Free Trading Bots</a><a href="#premium">Trading Bots</a><a href="#other">Coming Soon</a></nav></div></header>
 <main class="wrap"><section aria-label="Platform and broker compatibility" class="tr-compat" id="trader-repository-compatibility-20261020"><strong>PLATFORM &amp; BROKER COMPATIBILITY</strong><div class="tr-platform-grid"><div class="tr-platform-card windows"><span class="tr-platform-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M2 5.2 10.5 4v8H2zm9.7-1.4L22 2v10H11.7zM2 13h8.5v8L2 19.8zm9.7 0H22v9l-10.3-1.5z" fill="currentColor"></path></svg></span><div class="tr-platform-copy"><strong>Windows 10/11 (64-bit)</strong><small>Supported platform</small></div></div><div class="tr-platform-card broker"><span class="tr-platform-icon"><span class="tr-ibkr-brand"><b>IB</b>KR</span></span><div class="tr-platform-copy"><strong>Interactive Brokers (IBKR)</strong><small>Supported across all trading bots</small></div></div><div class="tr-platform-card dev"><span class="tr-platform-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 7v5l3 2m6-2a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></span><div class="tr-platform-copy"><strong>MetaTrader 5 (MT5)</strong><small>Integration in development — not yet available</small></div></div><div class="tr-platform-card future"><span class="tr-platform-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 17h16M4 17l5-5 4 3 7-8M16 7h4v4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></span><div class="tr-platform-copy"><strong>Future broker integrations</strong><small>NinjaTrader, thinkorswim (TOS) &amp; more — planned, not currently supported</small></div></div></div><div aria-label="Other operating system availability" class="tr-os-availability"><div class="tr-os-unavailable"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M16.8 12.8c.1 2.2 1.9 3 1.9 3-.1.1-1.5 4.3-3.7 4.3-1.1 0-1.6-.7-2.9-.7-1.3 0-1.9.7-3 .7-2.2.1-4.1-3.9-4.1-7 0-3 1.9-4.5 3.7-4.5 1.2 0 2.2.8 3 .8.8 0 1.9-.9 3.3-.8 1.1 0 2.2.5 2.9 1.3-2.6 1.5-2.2 3.4-2.2 3.4ZM14.4 6.7c.8-1 1.3-2.2 1.2-3.4-1.1.1-2.3.8-3 1.7-.7.8-1.3 2-1.2 3.1 1.2.1 2.3-.5 3-1.4Z" fill="currentColor"></path></svg><div><strong>macOS</strong><span>Not currently supported</span></div></div><div class="tr-os-unavailable"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2c-2.5 0-4 2.1-4 5.4 0 1.4.3 2.7.7 3.8-.6 1.5-1.7 3.1-2.6 4.7-.8 1.3-1.3 2.6-1 3.3.3.7 1.4.7 2.4.3l1.5-.7c.9.6 1.9 1 3 1s2.1-.4 3-1l1.5.7c1 .4 2.1.4 2.4-.3.3-.7-.2-2-1-3.3-.9-1.6-2-3.2-2.6-4.7.4-1.1.7-2.4.7-3.8C16 4.1 14.5 2 12 2Zm-2 5.4c.4 0 .7.4.7.9s-.3.9-.7.9-.7-.4-.7-.9.3-.9.7-.9Zm4 0c.4 0 .7.4.7.9s-.3.9-.7.9-.7-.4-.7-.9.3-.9.7-.9ZM9.7 11c1.4.7 3.2.7 4.6 0-.2 1.3-1.1 2.3-2.3 2.3S9.9 12.3 9.7 11Z" fill="currentColor"></path></svg><div><strong>Linux</strong><span>Not currently supported</span></div></div><div class="tr-os-unavailable"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M2 5.2 10.5 4v8H2zm9.7-1.4L22 2v10H11.7zM2 13h8.5v8L2 19.8zm9.7 0H22v9l-10.3-1.5z" fill="currentColor"></path></svg><div><strong>Windows 32-bit</strong><span>Not currently offered</span></div></div></div></section><section aria-label="Introduction" class="hero"><div class="eyebrow">TRADER REPOSITORY · TRADING BOT DOWNLOADS</div><h1>Trading <em>Bots.</em></h1><p>Explore each bot's trading workflow, features and release status. Select available beta downloads below and complete checkout at the bottom of this page.</p></section>
 <section class="section" id="free"><div class="heading"><div><div class="kicker">01 · FREE BOTS</div><h2>Free Bots <button aria-controls="free-description" aria-expanded="false" aria-label="About Free Bots" class="category-info" data-category-info="free" type="button">(i)</button><span class="category-info-description" hidden="" id="free-description">Existing CSV-based bots. Fixed trading rules and manual or CSV-driven workflows; no learning engine.</span></h2></div><p>Entry-level bots and CSV-driven order workflows.</p></div><div class="bot-vertical-list"><article class="product bot-list-entry"><div class="compact-bot-name">Mini RSI</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Mini RSI" type="checkbox"/> FREE BETA</label></div></article><article class="product bot-list-entry"><div class="compact-bot-name">Mini Scalper</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Mini Scalper" type="checkbox"/> FREE BETA</label></div></article><article class="product bot-list-entry"><div class="compact-bot-name">IF/Then Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="IF/Then Bot" type="checkbox"/> FREE BETA</label></div></article><div class="product bot-list-entry"><div class="compact-bot-name">Order Book Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Order Book Bot" type="checkbox"/> FREE BETA</label></div></div><div class="product bot-list-entry"><div class="compact-bot-name">ScalpBot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="ScalpBot" type="checkbox"/> FREE BETA</label></div></div></div></section>
