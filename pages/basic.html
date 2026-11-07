@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Trading Bots | Trader Repository</title><link href="/favicon.png" rel="icon" type="image/png"/><style>
+:root{--bg:#071019;--panel:#10202c;--line:#2c4a5e;--white:#eff9ff;--muted:#a5bcc9;--cyan:#43d9f1;--green:#65dfa8;--gold:#f4c66e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font:15px/1.55 system-ui,Segoe UI,Arial,sans-serif}button{font:inherit}a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:auto;padding:0 24px}.topbar{position:sticky;top:0;z-index:10;background:#08131bf2;border-bottom:1px solid #244050;backdrop-filter:blur(14px)}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 0}.brand{font-weight:950;letter-spacing:.6px;font-size:21px}.brand b{color:var(--cyan)}.links{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;font-weight:800;color:#b8d0dd}.links a:hover{color:var(--cyan)}
+.hero{padding:82px 0 58px}.eyebrow{font-size:11px;color:var(--cyan);letter-spacing:2px;font-weight:900}.hero h1{font-size:clamp(40px,6vw,76px);letter-spacing:-3px;line-height:1.04;margin:15px 0;max-width:850px}.hero h1 em{color:var(--cyan);font-style:normal}.hero p{max-width:720px;color:#b7cad6;font-size:18px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.pill{display:inline-block;padding:12px 19px;border-radius:8px;background:var(--cyan);color:#06202b;font-weight:900}.pill.secondary{background:#152b39;border:1px solid #385b6c;color:#e7f7ff}
+.section{padding:52px 0;border-top:1px solid #1c3443}.heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:23px}.heading h2{font-size:clamp(27px,3.3vw,39px);letter-spacing:-1px;margin:4px 0}.heading p{color:var(--muted);margin:0;max-width:550px}.kicker{font-size:11px;letter-spacing:1.6px;color:var(--cyan);font-weight:900}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.product{display:flex;flex-direction:column;min-height:290px;padding:23px;border:1px solid #355366;border-radius:13px;background:linear-gradient(145deg,#122d3f,#0d1d29)}.product-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.glyph{font-size:32px;color:#7ee5f7}.status{font-size:10px;letter-spacing:.6px;font-weight:900;color:#9be3ef;text-align:right}.product h3{font-size:25px;margin:19px 0 5px}.lead{color:#b9cfdb;margin:0 0 24px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.actions button,.small-card button,.feature button{border:1px solid #4e7a90;border-radius:7px;background:#1b455a;color:#e9faff;padding:10px 12px;font-size:11px;font-weight:900;cursor:pointer}.actions button:disabled,.feature button:disabled{cursor:not-allowed;opacity:.65}.actions button.more,.small-card button.more,.feature button.more{background:transparent;border-color:#365467;color:#aee9f7;opacity:1;cursor:pointer}.actions button.upgrade{color:#f9d38b;border-color:#816939;background:#352a18}
+.feature{padding:29px;border-radius:16px;border:1px solid #35586d;background:linear-gradient(120deg,#123044,#0b1c29);display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}.feature h3{font-size:clamp(27px,3.4vw,42px);line-height:1.1;letter-spacing:-1.2px;margin:10px 0}.feature p{color:#b4cbd8;max-width:640px}.feature ul{padding-left:20px;color:#d1e8f2}.feature-visual{min-height:230px;border:1px solid #2f5266;border-radius:12px;background:radial-gradient(circle at 70% 40%,#1b607d,#0b1b29 65%);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;text-align:center}.feature-visual .big{font-size:75px;color:#64e1f2;font-weight:900;line-height:1}.feature-visual span{font-size:12px;color:#a9cbdc;letter-spacing:2px;font-weight:800;margin-top:16px}.feature .actions{margin-top:20px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.tile{padding:29px;background:#102331;border:1px solid #325064;border-radius:14px}.tile h3{font-size:28px;margin:10px 0}.tile p{color:#adc4d0}.tile .symbol{font-size:50px;color:var(--cyan)}.small-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.small-card{padding:19px;border:1px solid #304c5d;border-radius:10px;background:#0f202c;display:flex;flex-direction:column;gap:10px}.small-card strong{font-size:19px}.small-card span{color:#a9c0cd;font-size:13px;flex:1}.small-card button{align-self:flex-start}
+footer{border-top:1px solid #254051;padding:35px 0;color:#8faab9;font-size:12px}.notice{font-size:12px;color:#91aeba}
+dialog{max-width:580px;width:calc(100% - 32px);border:1px solid #5a9db6;border-radius:14px;background:#102330;color:#f0f9ff;padding:28px;box-shadow:0 20px 90px #000b}dialog::backdrop{background:#000b}dialog h2{font-size:29px;margin:0 0 12px}dialog p{color:#b6ccd8}dialog li{margin:6px 0}dialog .close{background:var(--cyan);border:0;border-radius:7px;padding:9px 16px;font-weight:900;cursor:pointer}.modal-info[hidden]{display:none}.feature-visual svg{display:block;width:100%;height:auto;max-height:260px}.hive-diagram svg{display:block;width:100%;height:auto;max-height:235px}.hive-diagram{margin:-10px 0 18px;background:#081c29;border:1px solid #2c5367;border-radius:10px;padding:12px}.hal-art{display:block;width:100%;height:auto;max-height:235px;margin:-10px 0 18px}.install-footnote{border-top:1px solid #35586d;padding-top:14px;font-size:12px;color:#b2d6e4}
+@media(max-width:880px){.cards,.small-grid{grid-template-columns:repeat(2,1fr)}.feature{grid-template-columns:1fr}.links{gap:10px}}@media(max-width:610px){.cards,.small-grid,.pair{grid-template-columns:1fr}.hero{padding:55px 0}.hero h1{letter-spacing:-1.5px}.nav{align-items:flex-start;flex-direction:column}.wrap{padding:0 16px}.heading{display:block}.feature{padding:22px}}
+
+/* Compact itemized download summary */
+.download-cart-rows{display:grid;gap:0}.download-cart-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:9px 2px;border-bottom:1px solid #294657}.download-cart-row span{display:flex;flex-direction:column;gap:1px}.download-cart-row small{font-size:11px;color:#9db9c8}.download-cart-row b{font-size:14px;white-space:nowrap;color:#c6f5ff}.download-cart-total{display:flex;justify-content:space-between;align-items:center;padding:15px 2px 3px;font-size:18px;color:#f1faff}
+
+/* Match the Control Panel visual FRAME to the Advanced Chart's square image. */
+#control .feature-visual { width:100%; aspect-ratio:1 / 1; display:flex; align-items:center; justify-content:center; padding:0!important; background:#081723; overflow:hidden; }
+#control .feature-visual img { width:100%; height:100%; max-width:none; max-height:none; object-fit:contain; display:block; }
+@media(max-width:1000px){#control .feature-visual{width:100%;max-width:680px;aspect-ratio:1 / 1}}
+
+/* Control Panel: fill the preview with the full-width software screenshot, without square letterboxing */
+#control .feature-visual{aspect-ratio:auto!important;min-height:0!important;height:auto!important;padding:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+#control .feature-visual img{display:block!important;width:100%!important;height:auto!important;max-width:none!important;object-fit:contain!important}
+#control .feature-visual span{padding:10px 8px!important}
+</style><style id="bitcoin-checkout-restored-css">
+.payment-panel{display:none;margin-top:14px;padding:16px;border:1px solid #45677b;border-radius:9px;background:#101f2b}
+.payment-panel.show{display:block}.payment-panel code{word-break:break-all;color:#b6e9ff}
+.copyrow{display:flex;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px solid #263b48;padding:8px 0}
+.copyrow button{border:0;background:transparent;color:#86cfe9;text-decoration:underline;cursor:pointer}
+.field{display:grid;gap:6px;margin:13px 0;color:#b8c9d5}.field input{height:42px;border:1px solid #355061;border-radius:7px;background:#0b1219;color:#fff;padding:8px 10px;width:100%}
+.restore{margin-top:17px;padding:16px;border:1px solid #385263;border-radius:9px;background:#101d28}
+.restore-row{display:flex;gap:9px}.restore-row input{flex:1;height:42px;border:1px solid #355061;border-radius:7px;background:#0b1219;color:#fff;padding:8px 10px}
+.status{margin-top:12px;color:#9fd8e9;min-height:21px;white-space:pre-wrap}.error{color:#ffadad}
+.license{padding:12px;margin:12px 0;border:1px solid #3f8068;background:#122b25;border-radius:8px}.license code{overflow-wrap:anywhere}
+.fine{font-size:12px;color:#8fa4b1}
+.checkout .btn{border:0;border-radius:8px;padding:13px 18px;font-weight:900;cursor:pointer;background:linear-gradient(180deg,#39d4f0,#1299b9);color:#06171d}
+.checkout .btn.secondary{background:#193747;color:#d7f3ff;border:1px solid #3c7896}
+.checkout .btn.gold{background:linear-gradient(180deg,#ffdc89,#d8a638);color:#261a08}
+@media(max-width:560px){.restore-row{flex-direction:column}.checkout .btn{width:100%}}
+</style><style id="bitcoin-button-visibility-fix">
+#bitcoinCheckout .btn{
+  background:linear-gradient(180deg,#42dcf4,#18afd0);
+  color:#04151b;
+  border:1px solid #69e7fb;
+  box-shadow:0 0 0 1px rgba(37,199,232,.18),0 4px 12px rgba(0,0,0,.22);
+  opacity:1;
+}
+#bitcoinCheckout .btn:hover{
+  filter:brightness(1.08);
+  transform:translateY(-1px);
+}
+#bitcoinCheckout .btn.gold{
+  background:linear-gradient(180deg,#ffe29a,#e8b44d);
+  color:#241805;
+  border-color:#ffe09a;
+}
+#bitcoinCheckout .btn.secondary{
+  background:#193747;
+  color:#bfefff;
+  border:1px solid #4c8ca9;
+}
+#bitcoinCheckout .btn:disabled{
+  opacity:.42;
+  filter:saturate(.55);
+  box-shadow:none;
+  cursor:not-allowed;
+}
+</style><style id="premium-license-gate-fix">
+#premiumDownload[hidden],
+#restoredDownload[hidden],
+#issuedLicense[hidden]{
+  display:none !important;
+}
+#premiumDownload:disabled,
+#restoredDownload:disabled{
+  opacity:.38 !important;
+  filter:saturate(.45) !important;
+  cursor:not-allowed !important;
+  pointer-events:none !important;
+}
+</style><style id="checkout-cosmetic-bridge">
+#legacyPurchaseSelectors{position:absolute!important;left:-99999px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden!important}
+#purchaseCart{scroll-margin-top:90px}#purchaseCart .box{background:#102331;border:1px solid #325064;border-radius:12px;padding:20px;margin:14px 0}#purchaseCart .box h3{margin-top:0}#purchaseCart .free{font-weight:900;color:#65dfa8;font-size:19px}#purchaseCart .createBtn{border:0;border-radius:8px;padding:14px 18px;font-weight:900;background:#43d9f1;color:#06171d;cursor:pointer}#purchaseCart .createBtn:disabled{opacity:.4;cursor:not-allowed}
+#bitcoinCheckout{margin:22px 0 55px;padding:24px;border:1px solid #35586d;border-radius:14px;background:#102331;scroll-margin-top:100px}#bitcoinCheckout .head{font-size:20px;font-weight:900;color:#f4c66e}#bitcoinCheckout .body{padding-top:10px}#bitcoinCheckout .restore{display:block}
+#purchaseCart .note{font-size:12px;color:#b1c6d2}#purchaseCart #selectedList li{padding:4px 0}#purchaseCart .pill{cursor:pointer;margin-top:12px}
+.actions .cart-add,.actions .cart-control{background:#194a39;border-color:#4ca984;color:#baffd5}.actions .cart-add.upgrade{background:#352a18;border-color:#816939;color:#f9d38b}.actions .cart-add:hover,.actions .cart-control:hover{filter:brightness(1.2)}
+#bitcoinCheckout .payment-panel.show{display:block}#bitcoinCheckout .restore-row input{min-width:0}#bitcoinCheckout .status{font-size:13px}#bitcoinCheckout .license{overflow-wrap:anywhere}
+</style><style id="compact-download-choices">
+.actions{gap:7px!important;align-items:center}
+.download-choice{display:inline-flex;align-items:center;gap:6px;margin:0;padding:6px 9px;border:1px solid #35566a;border-radius:6px;background:#102936;color:#cde9f4;font-size:10px;font-weight:800;line-height:1.25;cursor:pointer;white-space:normal;max-width:100%}
+.download-choice input{width:14px;height:14px;margin:0;accent-color:#43d9f1;flex:none}
+.download-choice:has(input:checked){border-color:#5ed9e9;background:#174051;color:#e6fcff}
+.download-choice.paid{border-color:#735e39;color:#f5d597;background:#2a241b}
+.download-choice.paid:has(input:checked){border-color:#f4c66e;background:#49371e}
+.download-choice+.download-choice{margin-left:0}
+.download-cart-extra{margin-top:10px;padding:10px;border:1px solid #35586d;border-radius:8px;color:#c2dae7}
+.actions .more{padding:7px 9px;font-size:10px}
+</style><style id="beebot-roadmap-layout">
+/* HAL is a standalone intelligence feature. BeeBot + The HIVE is a coming-soon banner. */
+.hal-feature-row{display:grid;grid-template-columns:1fr}
+.hal-feature-row>.tile{width:100%}
+.hal-feature-row .hal-art{max-width:720px;margin:0 auto 18px}
+.beebot-roadmap-banner{margin:0 0 20px;border:1px solid #35586d;border-radius:14px;background:linear-gradient(120deg,#123044,#0b1c29);padding:20px}
+.beebot-roadmap-heading{font-size:11px;letter-spacing:1.6px;font-weight:900;color:var(--cyan);margin-bottom:12px}
+.beebot-roadmap-banner .tile{border:0;background:transparent;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:26px;align-items:center}
+.beebot-roadmap-banner .hive-diagram{grid-column:2;grid-row:1 / span 5;margin:0}
+.beebot-roadmap-banner .tile>.kicker,.beebot-roadmap-banner .tile>h3,.beebot-roadmap-banner .tile>p,.beebot-roadmap-banner .tile>button{grid-column:1}
+.beebot-roadmap-banner .tile>button{justify-self:start}
+@media(max-width:700px){.beebot-roadmap-banner .tile{display:block}.beebot-roadmap-banner .hive-diagram{margin-bottom:16px}}
+</style><style>.free-beta-intro{margin:0 0 23px;padding:15px 19px;border-left:3px solid var(--cyan);background:#102331;color:#c6dce8;border-radius:0 8px 8px 0;max-width:1000px}</style><style id="compact-home-intro">
+/* Put the actual bot products first, especially on phones. */
+.hero{padding:30px 0 24px}
+.hero h1{font-size:clamp(30px,3.6vw,46px);line-height:1.09;letter-spacing:-1.4px;margin:9px 0 8px;max-width:none}
+.hero p{font-size:15px;line-height:1.5;margin:0;color:#b7cad6;max-width:720px}
+.hero-actions{margin-top:15px;gap:9px}
+.hero-actions .pill{padding:9px 13px;font-size:12px}
+#free{padding-top:25px}
+#free .heading{margin-bottom:16px}
+#free .heading h2{font-size:clamp(25px,3vw,34px)}
+@media(max-width:610px){
+ .hero{padding:19px 0 15px}
+ .hero .eyebrow{font-size:9px;letter-spacing:1.2px}
+ .hero h1{font-size:32px;line-height:1.08;letter-spacing:-.9px;margin:7px 0}
+ .hero h1 br{display:none}
+ .hero p{font-size:13px;line-height:1.4}
+ .hero-actions{margin-top:11px;gap:7px}
+ .hero-actions .pill{padding:8px 10px;font-size:10px}
+ #free{padding-top:18px}
+ #free .heading{margin-bottom:12px}
+ #free .heading h2{font-size:25px}
+ #free .heading p{font-size:13px;line-height:1.4;margin-top:5px}
+}
+</style><style>/* Control Panel screenshot: match Advanced Chart graphic width and framing. */
+#control .feature{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center}
+#control .feature-visual{padding:0!important;overflow:hidden;background:#081723;min-height:0}
+#control .feature-visual img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:10px}
+@media(max-width:1000px){#control .feature{grid-template-columns:1fr}#control .feature-visual{max-width:680px;width:100%;margin:4px auto 0}}
+</style><style>
+/* Compact product banners with in-page screenshot zoom. */
+#chart .feature.advanced-chart-feature, #control .feature {
+ display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr)!important;
+ gap:24px!important;align-items:center!important;padding:22px 24px!important;
+}
+#chart .feature.advanced-chart-feature > div:first-child, #control .feature > div:first-child{min-width:0!important}
+#chart .feature-visual,#control .feature-visual{
+ width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;
+ aspect-ratio:auto!important;margin:0!important;padding:8px!important;
+ display:block!important;background:#081723!important;border:1px solid #315268!important;
+ border-radius:11px!important;overflow:hidden!important;
+}
+#chart .feature-visual .fullsize-shot,#control .feature-visual .fullsize-shot{display:block!important;width:100%!important;cursor:zoom-in!important}
+#chart .feature-visual img,#control .feature-visual img{
+ display:block!important;width:100%!important;height:auto!important;max-width:100%!important;
+ max-height:260px!important;object-fit:contain!important;border-radius:6px!important;
+}
+#chart .feature-visual span,#control .feature-visual span{font-size:10px!important;padding:7px 4px!important;letter-spacing:1px!important}
+#chart .shot-hint,#control .shot-hint{font-size:11px!important;padding:4px!important}
+#chart .feature-visual .fullsize-shot:focus-visible,#control .feature-visual .fullsize-shot:focus-visible{outline:2px solid #43d9f1;outline-offset:2px}
+#shotZoom{position:fixed;inset:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;
+ padding:52px 20px 22px;margin:0;border:0;background:rgba(3,12,20,.96);color:#eaf8ff;overflow:auto}
+#shotZoom::backdrop{background:rgba(0,0,0,.88)}
+#shotZoom img{display:block;max-width:100%;max-height:calc(100dvh - 110px);width:auto;height:auto;margin:auto;object-fit:contain}
+#shotZoom .zoom-toolbar{position:fixed;top:9px;right:18px;display:flex;gap:10px;align-items:center;z-index:2}
+#shotZoom button{background:#17435a;color:#fff;border:1px solid #4b93aa;border-radius:7px;padding:9px 15px;font-weight:700;cursor:pointer}
+@media(max-width:950px){#chart .feature.advanced-chart-feature,#control .feature{grid-template-columns:1fr!important}}
+@media(max-width:610px){#chart .feature.advanced-chart-feature,#control .feature{padding:18px!important;gap:16px!important}#chart .feature-visual img,#control .feature-visual img{max-height:220px!important}}
+</style><style>
+/* Compact Advanced Chart banner: feature detail stays in the existing More Info modal */
+#chart .advanced-chart-feature {align-items:center;gap:24px;padding:24px;}
+#chart .advanced-chart-feature h3{margin:9px 0 12px;line-height:1.15}
+#chart .chart-compact-intro{margin:0 0 14px;max-width:570px;line-height:1.55;color:#c7dfed}
+#chart .chart-compact-list{display:grid;gap:9px;margin:0 0 14px;padding:0;list-style:none}
+#chart .chart-compact-list li{padding-left:19px;position:relative;line-height:1.4;color:#dceef7}
+#chart .chart-compact-list li::before{content:'✓';position:absolute;left:0;color:#31d0f4;font-weight:800}
+#chart .notice{margin:8px 0 12px;font-size:11px;line-height:1.4}
+#chart .actions{gap:8px;flex-wrap:wrap}
+#chart .feature-visual{align-self:center}
+@media(max-width:880px){#chart .advanced-chart-feature{padding:20px;gap:14px}}
+</style><style>
+/* Advanced Chart feature snapshots: compact and clickable */
+.chart-thumb-heading{font-size:11px;font-weight:800;letter-spacing:.1em;color:#9fc9e1;margin:12px 0 8px;text-align:center}
+.chart-thumb-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;width:100%}
+.chart-thumb-strip a{cursor:zoom-in;display:block;min-width:0;border:1px solid #335a72;border-radius:6px;overflow:hidden;background:#081522;text-decoration:none;color:#cce7f6;transition:border-color .2s,transform .2s}
+.chart-thumb-strip a:hover,.chart-thumb-strip a:focus-visible{border-color:#38d1f1;transform:translateY(-2px)}
+.chart-thumb-strip img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.chart-thumb-strip span{display:block;text-align:center;font-size:10px;line-height:1.3;padding:5px 2px}
+@media(max-width:500px){.chart-thumb-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style><style id="hal-hive-unified-buttons">#intelligence .tile .actions,#beebot-banner .tile .actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px}#intelligence .tile .actions button.more,#beebot-banner .tile .actions button.more{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid #4e7a90;border-radius:7px;background:#153548;color:#bdefff;font-size:11px;font-weight:900;line-height:1.35;cursor:pointer}#intelligence .tile .actions button.more:hover,#beebot-banner .tile .actions button.more:hover{background:#20516a;color:#fff}</style><style id="thinkbox-feature-css">
+#intelligence .hal-feature-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#intelligence .hal-feature-row>.tile{min-width:0}
+#intelligence .thinkbox-feature h3{font-size:28px}
+#intelligence .thinkbox-feature ul{color:#c8e2ee;padding-left:20px;font-size:13px}
+#intelligence .thinkbox-feature li{margin:7px 0}
+#intelligence .thinkbox-art{width:100%;max-width:520px;margin:0 auto 18px}
+#intelligence .thinkbox-art svg{display:block;width:100%;height:auto;max-height:235px}
+#intelligence .thinkbox-beta{border-left:3px solid #43d9f1;padding:9px 12px;background:#0b2735;border-radius:0 7px 7px 0;font-size:12px}
+#intelligence .thinkbox-beta strong{color:#8fe9f7}
+@media(max-width:800px){#intelligence .hal-feature-row{grid-template-columns:1fr}}
+</style><style id="thinkbox-bot-banner-css">.bot-card[data-bot="Trend Bot"] .tags span:nth-child(3),.bot-card[data-bot="ZigZag Bot"] .tags span:nth-child(3){border-color:#348fa7!important;background:#12394a!important;color:#a8f0ff!important}.bot-card[data-bot="Trend Bot"] .bot-list li:nth-child(3),.bot-card[data-bot="ZigZag Bot"] .bot-list li:nth-child(3){color:#aeeefa;font-weight:750}</style><style id="thinkbox-gallery-20261012">
+#intelligence .thinkbox-art{max-width:100%;margin:0 auto 16px}
+#intelligence .thinkbox-art svg{max-height:none}
+#intelligence .thinkbox-gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+#intelligence .thinkbox-shot{min-width:0;display:block;overflow:hidden;border:1px solid #365c71;border-radius:9px;background:#071723;cursor:zoom-in}
+#intelligence .thinkbox-shot:hover,#intelligence .thinkbox-shot:focus-visible{border-color:#43d9f1;outline-offset:2px}
+#intelligence .thinkbox-shot img{display:block;width:100%;height:135px;object-fit:cover;object-position:top left}
+#intelligence .thinkbox-shot span{display:block;font-size:11px;font-weight:750;color:#bdeafa;padding:9px}
+#intelligence .thinkbox-shot b{float:right;color:#43d9f1}
+@media(max-width:480px){#intelligence .thinkbox-gallery{grid-template-columns:1fr}#intelligence .thinkbox-shot img{height:165px}}
+</style>
+<style id="free-beta-green-buttons">
+/* Green Free Beta selection controls; premium and other actions unchanged. */
+.download-choice:not(.paid){background:linear-gradient(180deg,#35e99c,#1ab976);border:1px solid #68ffc0;color:#06291d;font-weight:900;box-shadow:0 2px 10px #16ca7730;transition:filter .15s,box-shadow .15s;}
+.download-choice:not(.paid):hover{filter:brightness(1.13);box-shadow:0 0 14px #38e99a70;}
+.download-choice:not(.paid) input{accent-color:#087e4a;}
+.download-choice:not(.paid):has(input:checked){background:linear-gradient(180deg,#8dffd0,#3ee7a0);border-color:#b0ffe0;color:#042a1a;box-shadow:0 0 0 2px #45ef9c65;}
+</style>
+<style id="hal-think-product-banner-20261012">
+.hal-think-product-tag{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;align-self:flex-start;width:fit-content;margin:5px 0 7px;padding:5px 9px;border:1px solid #39a9bb;border-radius:6px;background:#113a45;color:#8ff1fa;font-size:10px;font-weight:900;letter-spacing:.55px;}
+.hal-think-product-tag span{color:#b4d7df;font-size:9px;}
+</style>
+<style id="bot-animated-video-thumbnails">
+#premium .bot-demo-thumb{display:block;position:relative;width:100%;aspect-ratio:16/9;margin:10px 0 16px;padding:0;overflow:hidden;border:1px solid #3a719e;border-radius:10px;background:linear-gradient(135deg,#10283d,#071321);cursor:pointer;text-align:left;box-shadow:0 8px 22px #0005}
+#premium .bot-demo-thumb video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#premium .bot-demo-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,#07131b05 30%,#061321c9 100%);color:#f0f8ff}
+#premium .bot-demo-play{display:grid;place-items:center;width:46px;height:46px;border:2px solid #ffb05a;border-radius:50%;background:#0b243bc9;color:#ffb05a;font-size:20px;box-shadow:0 0 25px #ff982d55;transition:transform .2s}
+#premium .bot-demo-label{position:absolute;bottom:12px;left:12px;right:12px;font-size:11px;font-weight:900;letter-spacing:.7px;text-shadow:0 2px 5px #000}
+#premium .bot-demo-thumb:hover,#premium .bot-demo-thumb:focus-visible{border-color:#ff9c43;outline-offset:3px}
+#premium .bot-demo-thumb:hover .bot-demo-play{transform:scale(1.12)}
+#botDemoDialog{width:min(1050px,calc(100% - 24px));max-width:1050px;padding:15px;background:#081724;border:1px solid #4285b7;border-radius:13px;color:#e8f6ff}
+#botDemoDialog::backdrop{background:#000d}
+#botDemoDialog .bot-demo-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;font-weight:850}
+#botDemoDialog .bot-demo-close{border:1px solid #4e7d9d;background:#173b59;color:#fff;border-radius:7px;padding:7px 12px;cursor:pointer}
+#botDemoDialog video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border-radius:7px}
+#botDemoDialog .bot-demo-disclaimer{font-size:11px;color:#aac3d7;margin:9px 0 0}
+</style><style id="ownership-and-expanded-demos-20261013">
+/* Additional video previews in the Coming Soon fleet */
+#other .bot-demo-thumb,#beebot-banner .bot-demo-thumb{display:block;position:relative;width:100%;aspect-ratio:16/9;margin:10px 0 12px;padding:0;overflow:hidden;border:1px solid #3a719e;border-radius:10px;background:#071321;cursor:pointer;text-align:left;box-shadow:0 8px 22px #0005}
+#other .bot-demo-thumb video,#beebot-banner .bot-demo-thumb video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#other .bot-demo-overlay,#beebot-banner .bot-demo-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07131b05 30%,#061321d9 100%);color:#f0f8ff}
+#other .bot-demo-play,#beebot-banner .bot-demo-play{display:grid;place-items:center;width:46px;height:46px;border:2px solid #ffb05a;border-radius:50%;background:#0b243bc9;color:#ffb05a;font-size:20px;box-shadow:0 0 25px #ff982d55}
+#other .bot-demo-label,#beebot-banner .bot-demo-label{position:absolute;bottom:10px;left:10px;right:10px;font-size:10px;font-weight:900;letter-spacing:.5px}
+#other .bot-demo-thumb:hover,#other .bot-demo-thumb:focus-visible,#beebot-banner .bot-demo-thumb:hover{border-color:#ff9c43}
+#beebot-banner .hive-diagram .bot-demo-thumb{max-width:370px;margin:12px auto 0}
+.ownership-feature{display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:center;margin:0 0 22px;padding:23px;border:1px solid #3a719d;border-radius:14px;background:linear-gradient(115deg,#112f4e,#0b1e32)}
+.ownership-feature h3{font-size:clamp(22px,2.8vw,30px);line-height:1.18;margin:8px 0 11px;color:#f4faff}.ownership-feature p{font-size:13px;line-height:1.55;color:#c4d9ea;margin:0 0 10px}.ownership-feature .ownership-caption strong{color:#ffae5b}.ownership-feature .ownership-note{font-size:11px;color:#91b3d0;margin:12px 0 0}
+.ownership-graphic{display:flex;gap:11px;align-items:center;min-width:0}.ownership-branch{display:grid;gap:8px;flex:1;min-width:0}.ownership-bot{padding:10px 9px;border:1px solid #3a78a6;border-radius:7px;background:#163655;color:#dceeff;font-size:11px;font-weight:900;line-height:1.3}.ownership-bot small{display:block;color:#8fc9f0;font-size:9px;margin-top:4px}.ownership-arrow{color:#ff9c3b;font-size:26px}.ownership-registry{flex:1.2;min-width:0;padding:13px 10px;border:1px solid #e0903d;border-radius:9px;background:#0b1827}.ownership-file{color:#ffb16b;font-size:12px;font-weight:900;white-space:nowrap}.ownership-code{display:grid;gap:2px;margin:9px 0;font:10px/1.5 Consolas,monospace;color:#aee6ff;overflow-wrap:anywhere}.ownership-status{border-top:1px solid #284762;padding-top:9px;color:#6fe6ae;font-size:10px;font-weight:900}
+@media(max-width:780px){.ownership-feature{grid-template-columns:1fr;padding:17px}.ownership-graphic{max-width:560px;width:100%;margin:auto}}
+@media(max-width:420px){.ownership-bot{font-size:10px;padding:8px 6px}.ownership-arrow{font-size:18px}.ownership-file{font-size:10px}.ownership-code{font-size:9px}}
+</style><style id="free-and-standalone-video-previews-20261013">
+#free .bot-demo-thumb,.bot-card .bot-demo-thumb{display:block;position:relative;width:100%;aspect-ratio:16/9;margin:10px 0 16px;padding:0;overflow:hidden;border:1px solid #3a719e;border-radius:10px;background:#071321;cursor:pointer;text-align:left;box-shadow:0 8px 22px #0005}
+#free .bot-demo-thumb video,.bot-card .bot-demo-thumb video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#free .bot-demo-overlay,.bot-card .bot-demo-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07131b05 30%,#061321d9 100%);color:#f0f8ff}
+#free .bot-demo-play,.bot-card .bot-demo-play{display:grid;place-items:center;width:46px;height:46px;border:2px solid #ffb05a;border-radius:50%;background:#0b243bc9;color:#ffb05a;font-size:20px;box-shadow:0 0 25px #ff982d55}
+#free .bot-demo-label,.bot-card .bot-demo-label{position:absolute;bottom:10px;left:10px;right:10px;font-size:10px;font-weight:900;letter-spacing:.5px}
+#free .bot-demo-thumb:hover,.bot-card .bot-demo-thumb:hover,#free .bot-demo-thumb:focus-visible,.bot-card .bot-demo-thumb:focus-visible{border-color:#ff9c43}
+</style><style id="video-alignment-and-symbol-clash-20261013">
+/* Align demo previews and keep HAL badges from shifting video rows. */
+#free .product,#premium .product{display:flex;flex-direction:column}
+#free .product h3,#premium .product h3{margin-bottom:7px}
+#free .product .lead,#premium .product .lead{min-height:76px;margin:0 0 10px}
+#free .product .bot-demo-thumb,#premium .product .bot-demo-thumb{order:3;flex:none;margin:0 0 12px;width:100%;aspect-ratio:16/9}
+#premium .product .hal-think-product-tag{order:4;margin:0 0 12px;align-self:flex-start}
+#free .product .actions,#premium .product .actions{order:5;margin-top:auto}
+/* Compact symbol-ownership feature, graphic-forward. */
+#premium .ownership-feature{grid-template-columns:minmax(0,.68fr) minmax(0,1.32fr);padding:17px 21px;gap:22px}
+#premium .ownership-feature h3{font-size:clamp(21px,2.4vw,27px);margin:5px 0 8px}
+#premium .ownership-feature p{font-size:12px;line-height:1.45;margin:0 0 7px}
+#premium .ownership-feature .ownership-note{font-size:10px;color:#9db9d2;margin-top:8px}
+@media(max-width:780px){#premium .ownership-feature{grid-template-columns:1fr;padding:16px}}
+@media(max-width:610px){#free .product .lead,#premium .product .lead{min-height:0;margin-bottom:12px}}
+</style><style id="bot-demo-play-circle-fix-20261013">
+/* Fixed-size centered play controls for every bot demo thumbnail. */
+.bot-demo-thumb .bot-demo-overlay{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.bot-demo-thumb .bot-demo-play{
+  display:grid!important;
+  place-items:center!important;
+  box-sizing:border-box!important;
+  flex:0 0 46px!important;
+  width:46px!important;
+  min-width:46px!important;
+  max-width:46px!important;
+  height:46px!important;
+  min-height:46px!important;
+  max-height:46px!important;
+  aspect-ratio:1/1!important;
+  padding:0!important;
+  margin:0!important;
+  border:2px solid #ffb05a!important;
+  border-radius:50%!important;
+  background:rgba(11,36,59,.86)!important;
+  color:#ffb05a!important;
+  font-size:20px!important;
+  line-height:1!important;
+  box-shadow:0 0 25px #ff982d55!important;
+}
+.bot-demo-thumb:hover .bot-demo-play{transform:scale(1.1)}
+@media (prefers-reduced-motion:reduce){.bot-demo-thumb .bot-demo-play{transition:none!important}}
+</style><style id="dealership-visual-polish-20261014">
+/* Backtest Mechanic Dealership: conservative visual polish, 2026-10-14.
+   Visual overrides only. Checkout, selections, dialogs, scripts and IDs untouched. */
+:root { --cyan:#398be3; --green:#398be3; --gold:#ff9736; }
+html { scroll-padding-top:94px; }
+body { color:#f0f6ff; }
+button, a, input { transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease; }
+button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid #ff9a37;outline-offset:3px; }
+.section { padding-top:43px;padding-bottom:43px; }
+.heading { align-items:end;gap:22px; }
+.heading h2 { line-height:1.15; }
+.product,.small-card,.tile { border-color:#315c8a; }
+.product { padding:22px; }
+.product h3 { line-height:1.2; }
+.product .actions { gap:9px!important; }
+.product .actions button,.product .actions a { min-height:36px; }
+.product .actions .more,.slideshow-home-link { border-color:#4076ac;color:#e4f0ff;background:#173a61; }
+.product .actions .more:hover,.slideshow-home-link:hover { background:#205284;color:#fff; }
+/* Free and paid choices are distinguished by their labels, not green vs gold. */
+.download-choice:not(.paid),
+.download-choice:not(.paid):has(input:checked) {
+  background:#153e6b!important;border:1px solid #468cda!important;
+  color:#edf6ff!important;box-shadow:none!important;
+}
+.download-choice:not(.paid):hover { background:#1b5188!important;box-shadow:none!important; }
+.download-choice:not(.paid):has(input:checked) { background:#275b90!important;border-color:#ff9a37!important; }
+.download-choice:not(.paid) input { accent-color:#ff9736!important; }
+.download-choice.paid { background:#35271c;border-color:#a66b37;color:#ffd4a4; }
+/* Checkout is deliberately not structurally altered. */
+#purchaseCart .free { color:#ffb166; }
+#purchaseCart .createBtn { background:linear-gradient(135deg,#ffb45b,#ff861f);color:#201306; }
+#bitcoinCheckout .btn:not(.gold):not(.secondary) { background:linear-gradient(135deg,#ffb45b,#ff861f);border-color:#ffb15d;color:#201306; }
+#bitcoinCheckout .btn.secondary { background:#173d65;border-color:#477db0;color:#e9f4ff; }
+#bitcoinCheckout .license { border-color:#356a9a;background:#112c48; }
+#bitcoinCheckout .copyrow button { color:#93c7ff; }
+#intelligence .thinkbox-beta { border-left-color:#ff9638;background:#102b47; }
+#intelligence .thinkbox-beta strong { color:#ffc18b; }
+#chart .adjustable-stop-note { border-left-color:#ff9638; }
+#chart .chart-compact-list li::before { color:#ff9638; }
+#chart .chart-privacy-line { border-left-color:#ff9638; }
+#free .product .lead,#premium .product .lead { min-height:68px; }
+.bot-demo-thumb { border-color:#396a99!important; }
+.bot-demo-thumb:hover { border-color:#ff9a37!important; }
+@media(max-width:880px){.section{padding-top:34px;padding-bottom:34px}}
+@media(max-width:610px){.section{padding-top:27px;padding-bottom:27px}.product{padding:18px}#free .product .lead,#premium .product .lead{min-height:0}.heading{gap:8px}}
+@media(prefers-reduced-motion:reduce){button,a,input{transition:none!important}}
+</style><style id="dealership-action-theme-fix-20261014">
+/* Consistent Backtest Mechanic blue/orange action theme. */
+.slideshow-home-link,
+.product .actions .slideshow-home-link,
+.feature .actions .slideshow-home-link,
+#intelligence .tile .actions button.more,
+#beebot-banner .tile .actions button.more,
+.tile button.more,
+.small-card button.more,
+.feature button.more {
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#173e68!important;
+  border:1px solid #477eb4!important;
+  color:#f0f7ff!important;
+  border-radius:7px;
+  box-shadow:none!important;
+  opacity:1!important;
+}
+.slideshow-home-link:hover,
+.slideshow-home-link:focus-visible,
+#intelligence .tile .actions button.more:hover,
+#beebot-banner .tile .actions button.more:hover,
+.tile button.more:hover,.small-card button.more:hover,.feature button.more:hover {
+  background:#24588c!important;
+  border-color:#ff9a37!important;
+  color:#fff!important;
+}
+/* HAL Think Box badges and accents also use the product palette. */
+.hal-think-product-tag {
+  background:#183e68!important;
+  border-color:#4986c0!important;
+  color:#f2f7ff!important;
+}
+.hal-think-product-tag span{color:#c3d8ee!important}
+#intelligence .thinkbox-shot b {color:#ff9a37!important}
+#intelligence .thinkbox-shot:hover,
+#intelligence .thinkbox-shot:focus-visible{border-color:#ff9a37!important}
+/* Keep all Free Beta choices blue, even with the older green overrides. */
+.download-choice:not(.paid),
+.download-choice:not(.paid):has(input:checked){
+  background:#173e68!important;border-color:#477eb4!important;
+  color:#f0f7ff!important;box-shadow:none!important;
+}
+.download-choice:not(.paid):has(input:checked){border-color:#ff9a37!important;background:#285584!important}
+.download-choice:not(.paid):hover{background:#24588c!important;box-shadow:none!important}
+.download-choice:not(.paid) input{accent-color:#ff9a37!important}
+</style><style id="free-beta-green-restored-20261014">/* Free Beta selection buttons are green; other actions stay navy/blue/orange. */
+.download-choice:not(.paid){background:linear-gradient(180deg,#35e99c,#1ab976)!important;border:1px solid #68ffc0!important;color:#06291d!important;font-weight:900!important;box-shadow:0 2px 10px #16ca7730!important}
+.download-choice:not(.paid):hover{background:linear-gradient(180deg,#61f5b6,#22cc86)!important;border-color:#a1ffdc!important;box-shadow:0 0 14px #38e99a70!important}
+.download-choice:not(.paid):has(input:checked){background:linear-gradient(180deg,#8dffd0,#3ee7a0)!important;border-color:#b0ffe0!important;color:#042a1a!important;box-shadow:0 0 0 2px #45ef9c65!important}
+.download-choice:not(.paid) input{accent-color:#087e4a!important}
+</style><style id="traders-toybox-brand-20261016">
+:root{--toy-green:#77d74d}
+.topbar .brand{display:flex;align-items:center;min-width:0;flex:0 0 auto}
+.topbar .brand img{display:block;width:235px;max-width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 2px 6px #0006)}
+.topbar .nav{gap:18px}
+.topbar .links{justify-content:flex-end}
+.topbar .links a:hover{color:#a4ed81}
+.download-choice:not(.paid){background:linear-gradient(180deg,#7ce357,#45bc61)!important;border-color:#9aee84!important;color:#0b2919!important;box-shadow:none!important}
+.download-choice:not(.paid):hover{background:linear-gradient(180deg,#99ed75,#56ce71)!important}
+.download-choice:not(.paid):has(input:checked){background:#a4ed81!important;border-color:#d1ffbd!important;color:#0b2919!important}
+.download-choice:not(.paid) input{accent-color:#247a40!important}
+@media(max-width:800px){.topbar .nav{flex-direction:column;align-items:flex-start}.topbar .brand img{width:205px}.topbar .links{justify-content:flex-start}}
+</style>
+<style id="traders-toybox-logo-palette-20261016">
+/* Visual palette matched to Traders Toybox logo; existing layout and JS preserved. */
+:root{--toy-orange:#F9A21F;--toy-green:#39C58B;--toy-blue:#4CA5FA;--toy-purple:#A887F3;--toy-red:#F15B4A;--toy-yellow:#F5CE4C;--gold:var(--toy-orange);--cyan:var(--toy-blue);--green:var(--toy-green)}
+.topbar .links a:hover,.eyebrow,.kicker,.btm-tag,.btm-compat-kicker,#free .heading .kicker,.btm-launch h2 span{color:var(--toy-orange)!important}
+.hero h1 em,.brand b{color:var(--toy-orange)}
+.pill:not(.secondary),.btm-download,#purchaseCart .createBtn,#bitcoinCheckout .btn:not(.gold):not(.secondary){background:var(--toy-orange)!important;color:#161c26!important;border-color:var(--toy-orange)!important}
+.pill:not(.secondary):hover,.btm-download:hover,#purchaseCart .createBtn:hover{filter:brightness(1.08)}
+.product:hover,.small-card:hover{border-color:var(--toy-blue)}
+.glyph,.tile .symbol{color:var(--toy-blue)}
+.download-choice:not(.paid){background:linear-gradient(180deg,#54dba4,#30b87e)!important;border-color:#65e4b2!important;color:#08291c!important}
+.download-choice:not(.paid):hover{background:linear-gradient(180deg,#74e9ba,#3dc78f)!important;border-color:#9cf2ce!important}
+.download-choice:not(.paid):has(input:checked){background:#81e8be!important;border-color:#b7f8dc!important;color:#08291c!important}
+.download-choice:not(.paid) input{accent-color:#177e55!important}
+.download-choice.paid:has(input:checked){border-color:var(--toy-orange)!important}
+#bitcoinCheckout .head,#purchaseCart .free{color:var(--toy-orange)!important}
+#bitcoinCheckout .btn.gold,.checkout .btn.gold{background:linear-gradient(180deg,#ffdc6c,var(--toy-orange))!important;color:#211905!important}
+.btm-launch,.btm-compat{border-color:#386ca5}
+.btm-check{border-left-color:var(--toy-orange)}.btm-check strong{color:var(--toy-orange)}
+.bot-demo-thumb:hover,.bot-demo-thumb:focus-visible{border-color:var(--toy-orange)!important}
+.bot-demo-thumb .bot-demo-play{border-color:var(--toy-orange)!important;color:var(--toy-orange)!important}
+button:focus-visible,a:focus-visible,input:focus-visible{outline-color:var(--toy-orange)}
+</style>
+<style id="btm-research-details-20261016">#backtest-mechanic .btm-research{margin:23px 0 21px;padding:21px;border:1px solid #356797;border-radius:12px;background:#0b2138b8}#backtest-mechanic .btm-research-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:15px}#backtest-mechanic .btm-research-heading strong{font-size:15px;letter-spacing:1px;color:#ffab56}#backtest-mechanic .btm-research-heading span{font-size:12px;color:#b6d3ed}#backtest-mechanic .btm-research-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}#backtest-mechanic .btm-research-grid>div{padding:14px;border:1px solid #305a85;border-radius:9px;background:#112c49}#backtest-mechanic .btm-research-grid b{font-size:11px;letter-spacing:.65px;color:#a8d5ff}#backtest-mechanic .btm-research-grid p{font-size:12px;line-height:1.5;color:#c6d8eb;margin:7px 0 0}#backtest-mechanic .btm-research-caution{margin:13px 0 0;font-size:11px;color:#9bbad5}@media(max-width:850px){#backtest-mechanic .btm-research-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){#backtest-mechanic .btm-research{padding:14px}#backtest-mechanic .btm-research-grid{grid-template-columns:1fr}}</style><style id="btm-focused-research-banner-20261016">
+#backtest-mechanic .btm-description{max-width:940px}
+#backtest-mechanic .btm-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:23px 0 19px}
+#backtest-mechanic .btm-feature{min-width:0;padding:18px 17px;background:linear-gradient(150deg,#112f50,#0b223d);border:1px solid #38689c;border-radius:11px}
+#backtest-mechanic .btm-feature-icon{font-size:27px;color:#ffab50;line-height:1.2;margin-bottom:10px}
+#backtest-mechanic .btm-feature strong{display:block;color:#f5f9ff;font-size:13px;line-height:1.4;letter-spacing:.2px}
+#backtest-mechanic .btm-feature p{margin:8px 0 0;color:#bdd3ea;font-size:12px;line-height:1.55}
+#backtest-mechanic .btm-feature small{display:inline-block;color:#ffc184;font-size:9px;letter-spacing:.3px;vertical-align:baseline}
+#backtest-mechanic .btm-research-strip{padding:18px 20px;border:1px solid #4579aa;border-left:4px solid #f9a21f;border-radius:9px;background:#0d2744}
+#backtest-mechanic .btm-research-strip strong{display:block;color:#ffb25e;font-size:12px;letter-spacing:1px}
+#backtest-mechanic .btm-research-strip span{display:block;color:#e4f1ff;font-weight:750;font-size:14px;margin:5px 0}
+#backtest-mechanic .btm-research-strip p{font-size:11px;color:#a8c3df;margin:7px 0 0}
+@media(max-width:950px){#backtest-mechanic .btm-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:590px){#backtest-mechanic .btm-feature-grid{grid-template-columns:1fr}#backtest-mechanic .btm-feature{padding:15px}}
+</style><style id="trader-anatomy-blue-silver-20261016">
+/* Trader Anatomy brand palette. Visual-only overrides; all scripts and controls preserved. */
+:root{--bg:#081321;--panel:#112943;--line:#345d84;--white:#edf5fd;--muted:#adc5dc;--cyan:#5db9f2;--green:#63b6ed;--gold:#b9d7ee;--toy-orange:#6bb8ed;--toy-green:#6bb8ed;--toy-blue:#5db9f2;--toy-purple:#88bde8;--toy-red:#86b7df;--toy-yellow:#c3d9ed}
+body{background:radial-gradient(ellipse at 72% -10%,#173e69 0%,#0a1a30 42%,#070f1c 100%);color:#edf5fd}
+.topbar{background:#08182af5;border-bottom-color:#315c88}
+.topbar .links a{color:#c8d9eb}.topbar .links a:hover,.topbar .brand b{color:#80c9f5!important}
+.hero h1 em,.eyebrow,.kicker,.heading .kicker,#free .heading .kicker,#premium .heading .kicker{color:#8bcafa!important}
+.hero p,.heading p,.lead,.feature p,.tile p{color:#bed2e5}
+.pill,.btm-download,#purchaseCart .createBtn,#bitcoinCheckout .btn:not(.gold):not(.secondary){background:linear-gradient(125deg,#d2e0ed,#74b9e9)!important;color:#081b30!important;border-color:#8ac7ef!important;box-shadow:0 5px 18px #216fa82b!important}
+.pill.secondary,.btm-secondary{background:#17395f!important;color:#ecf5ff!important;border:1px solid #4984b9!important}
+.product,.tile,.small-card,.feature,.btm-launch,.btm-compat,.beebot-roadmap-banner,.ownership-feature{background:linear-gradient(145deg,#17375b,#0c2037)!important;border-color:#396b99!important}
+.product:hover,.small-card:hover{border-color:#6db6e8!important}
+.glyph,.tile .symbol,.feature-visual .big,.btm-launch h2 span,.btm-tag,.btm-compat-kicker,.btm-check strong,.btm-compat .btm-compat-state,.btm-label{color:#87c7f1!important}
+.btm-launch::after{color:#4b9be615!important}
+.btm-check,.chart-privacy-line,#chart .adjustable-stop-note,#intelligence .thinkbox-beta{border-left-color:#63afe6!important}
+.btm-status{background:#142e49!important;border-color:#457eae!important;color:#d0e6f8!important}
+.btm-bot-badges span:last-child,.btm-path,.btm-check{background:#132f4c!important;border-color:#3d75a5!important}
+.actions button,.small-card button,.feature button,.slideshow-home-link,#intelligence .tile .actions button.more,#beebot-banner .tile .actions button.more{background:#183e67!important;border-color:#4a82b5!important;color:#eef7ff!important}
+.actions button:hover,.small-card button:hover,.feature button:hover,.slideshow-home-link:hover{background:#265987!important;border-color:#7bbdea!important}
+.download-choice:not(.paid),.download-choice:not(.paid):hover{background:linear-gradient(180deg,#357fbd,#205b91)!important;border-color:#76bce9!important;color:#f5faff!important;box-shadow:none!important}
+.download-choice:not(.paid):has(input:checked){background:linear-gradient(180deg,#63b4e9,#3485c4)!important;border-color:#c0e5fc!important;color:#061c31!important;box-shadow:0 0 0 2px #75c7ef50!important}
+.download-choice:not(.paid) input,.download-choice.paid input{accent-color:#65baf1!important}
+.download-choice.paid,.download-choice.paid:has(input:checked){background:#223b56!important;border-color:#779fbd!important;color:#e6f2ff!important}
+.download-choice.paid:has(input:checked){border-color:#b4dcf5!important;background:#315a7e!important}
+#bitcoinCheckout,#purchaseCart .box,.payment-panel,.restore{background:#102841!important;border-color:#386995!important}
+#bitcoinCheckout .head,#purchaseCart .free,.ownership-feature .ownership-caption strong,.ownership-arrow,.ownership-file{color:#a4d4f3!important}
+#bitcoinCheckout .btn.gold{background:linear-gradient(125deg,#c5d8ea,#79b5df)!important;border-color:#a6d0ec!important;color:#0a1c2d!important}
+#bitcoinCheckout .btn.secondary{background:#1b4169!important;border-color:#5488b6!important;color:#edf7ff!important}
+.bot-demo-thumb,.thinkbox-shot,.chart-thumb-strip a{border-color:#4677a2!important}
+.bot-demo-thumb:hover,.thinkbox-shot:hover,.chart-thumb-strip a:hover{border-color:#87c9f2!important}
+.bot-demo-thumb .bot-demo-play,#premium .bot-demo-play,#free .bot-demo-play,#other .bot-demo-play,#beebot-banner .bot-demo-play{border-color:#9dd6f8!important;color:#b4e1fb!important;background:#10365ad9!important;box-shadow:0 0 22px #429ce455!important}
+.hal-think-product-tag,.btm-compat-state{background:#193c61!important;border-color:#568fbd!important;color:#d8ecfc!important}
+#chart .chart-compact-list li::before,#intelligence .thinkbox-shot b{color:#8bcafa!important}
+button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#8cccf3!important}
+/* Preserve the distinction between disabled and enabled actions. */
+button:disabled,.actions button:disabled{opacity:.45!important;cursor:not-allowed!important}
+</style><style id="product-detail-links-20261017">.product-detail-link{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid #4e85b7;border-radius:7px;background:#173e68;color:#eef8ff;font-size:11px;font-weight:900;text-decoration:none;line-height:1.35}.product-detail-link:hover{background:#275d91;border-color:#ffad57}.standalone-detail-link{margin:12px 0}.product h3 a:hover,.feature h3 a:hover,.tile h3 a:hover{color:#ffb05a}</style><style id="botzips-download-green-premium-gold-20261018">
+/* Final overrides: green Free Beta download selectors, bright gold Premium selectors. */
+.download-choice:not(.paid),
+.download-choice:not(.paid):hover {
+ background:linear-gradient(180deg,#55f0a0,#16ba69)!important;
+ border:1px solid #7cffb3!important;
+ color:#06291a!important;
+ box-shadow:0 3px 12px #00b96b38!important;
+}
+.download-choice:not(.paid):has(input:checked) {
+ background:linear-gradient(180deg,#a0ffd0,#3de79b)!important;
+ border-color:#d0ffe6!important;
+ color:#042b19!important;
+ box-shadow:0 0 0 2px #5df0aa70!important;
+}
+.download-choice:not(.paid) input{accent-color:#087c48!important}
+.download-choice.paid,.download-choice.paid:hover {
+ background:linear-gradient(180deg,#ffe28a,#f5b92f)!important;
+ border:1px solid #ffe59c!important;
+ color:#332006!important;
+ box-shadow:0 3px 12px #f5b92f35!important;
+}
+.download-choice.paid:has(input:checked) {
+ background:linear-gradient(180deg,#fff0b3,#ffd05a)!important;
+ border-color:#fff2c2!important;
+ color:#2d1c04!important;
+ box-shadow:0 0 0 2px #ffd05a75!important;
+}
+.download-choice.paid input{accent-color:#9b6400!important}
+</style><style id="trader-repository-theme">
+/* Trader Repository: shared repository interface (presentation only) */
+:root{color-scheme:dark;--bg:#0b111b;--panel:#111b29;--panel2:#162336;--line:#29394d;--border:#29394d;--cyan:#39bff0;--blue:#39bff0;--silver:#e4edf8;--white:#e4edf8;--muted:#9badc2}
+html{scroll-behavior:smooth}body{background:#0b111b!important;color:#e4edf8!important;font-family:Inter,'Segoe UI',Arial,sans-serif!important}
+.topbar,.top,body>nav{background:#0d1724!important;border-bottom:1px solid #29394d!important;box-shadow:none!important}
+.brand,.logo-text{letter-spacing:-.4px!important}
+.nav a,.links a{font-weight:650!important}
+.nav a:hover,.links a:hover{color:#57cbf5!important}
+.hero{padding-top:30px!important;padding-bottom:24px!important}
+.hero h1{font-size:clamp(29px,4vw,48px)!important;letter-spacing:-1.2px!important;line-height:1.12!important}
+.hero .eyebrow,.eyebrow,.kicker{font-family:ui-monospace,SFMono-Regular,Consolas,monospace!important;letter-spacing:.7px!important;color:#69c8ec!important}
+.section,.wide{border-color:#29394d!important}
+.product,.package,.small-card,.tile,.feature,.faq article,.category-toolbar,.checkout,.box{background:#111c2b!important;border-color:#2c3f54!important;box-shadow:none!important}
+.product,.package,.small-card,.tile,.feature{border-radius:9px!important}
+.product h3,.package h3,.tile h3{letter-spacing:-.5px}
+.pill,.primary,.btn:not(.secondary),.createBtn{background:#1878ae!important;color:#fff!important;border-color:#369ad0!important;box-shadow:none!important}
+.secondary,.pill.secondary,.btn.secondary{background:#14283c!important;color:#d6ebfa!important;border-color:#35526b!important}
+.chip,.tag,.status{border-radius:5px!important}
+footer{background:#0c1521!important;border-color:#29394d!important}
+.repo-wordmark{display:inline-flex;align-items:center;gap:7px;color:#e8eef7!important;font:700 17px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace!important;text-decoration:none!important;white-space:nowrap}
+.repo-wordmark .repo-code{color:#d7e8fa;background:#273444;padding:2px 5px;border-radius:4px}
+.repo-wordmark .repo-blue{color:#51baf5}
+.repo-wordmark .repo-symbol{color:#6ebfe9;font-size:16px}
+.repo-wordmark small{display:block;color:#9aaec1;font:10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap;margin-top:2px}
+.repo-wordmark .repo-title{display:block}
+@media(max-width:650px){.repo-wordmark{font-size:14px!important}.repo-wordmark small{font-size:9px}.top .wrap{gap:12px!important}.nav,.links{gap:10px!important}}
+</style><style id="trader-repository-compatibility-style-20261020">.tr-compat{margin:24px auto;padding:16px 20px;max-width:1150px;background:#102339;color:#e8f2ff;border:1px solid #28527b;border-radius:12px;font:inherit;line-height:1.65}.tr-compat strong{color:#fff}.tr-compat .tr-muted{color:#a9c0d9}</style><style id="tr-platform-icons-v1">.tr-platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:12px}.tr-platform-card{display:flex;align-items:flex-start;gap:10px;border:1px solid rgba(143,181,214,.26);border-radius:9px;padding:12px;background:rgba(10,24,38,.44);min-width:0}.tr-platform-icon{flex:0 0 23px;width:23px;height:23px;color:#8fc8f2}.tr-platform-icon svg{width:23px;height:23px;display:block}.tr-platform-copy{min-width:0}.tr-platform-copy strong{display:block;font-size:13px;color:inherit}.tr-platform-copy small{display:block;margin-top:4px;font-size:12px;line-height:1.4;color:#9bb5cb}.tr-platform-card.future .tr-platform-icon,.tr-platform-card.dev .tr-platform-icon{color:#a6b3c5}.tr-compat .tr-platform-card{color:#e6effb}.tr-compat .tr-platform-grid{margin-bottom:9px}</style><style id="tr-ibkr-brand-css">.tr-platform-card.broker .tr-platform-icon{width:auto;min-width:70px;padding:0 8px;background:#fff;border-radius:7px;color:#d62828;display:flex;align-items:center;justify-content:center}.tr-ibkr-brand{font-family:Arial,sans-serif;font-weight:900;font-size:16px;letter-spacing:-.7px;white-space:nowrap}.tr-ibkr-brand b{color:#e21c2a}.tr-platform-card.broker{border-color:#4b556b}.tr-platform-card.broker .tr-platform-copy small{color:#94e3bb}</style><style id="tr-os-compat-clarity">.tr-platform-card.windows{border-color:#3278bd;background:rgba(26,85,144,.22)}.tr-platform-card.windows .tr-platform-icon{width:38px;height:38px;flex-basis:38px;color:#54b8ff}.tr-platform-card.windows .tr-platform-icon svg{width:38px;height:38px}.tr-platform-card.windows .tr-platform-copy strong{font-size:15px}.tr-os-availability{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 2px}.tr-os-unavailable{display:flex;align-items:center;gap:9px;border:1px solid rgba(143,181,214,.19);border-radius:8px;padding:9px 12px;color:#a9b6c7;background:rgba(10,24,38,.25);font-size:12px}.tr-os-unavailable svg{width:20px;height:20px;flex:none;color:#98a9ba}.tr-os-unavailable strong{font-size:12px;color:#c5d0dd}.tr-os-unavailable span{display:block;color:#94a8ba}</style><style id="bots-only-catalog-alignment">#free .cards,#premium .cards{align-items:stretch}#free .product,#premium .product{min-height:235px}#other .small-card .slideshow-home-link{align-self:flex-start;margin-top:auto}#other .small-card{min-height:175px}</style><style id="vertical-bot-catalog-20261029">
+/* Checkout-first product detail layout, distinct from the tiled repository index. */
+.bot-vertical-list {display:flex!important;flex-direction:column!important;gap:12px!important}
+.bot-vertical-list>.bot-list-entry {width:100%!important;max-width:none!important;min-height:0!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(230px,300px)!important;
+  gap:16px 24px!important;align-items:start!important;margin:0!important;
+  padding:23px 26px!important;border:1px solid #38648d!important;border-radius:12px!important;
+  background:linear-gradient(110deg,#142a43,#0b1b2e)!important}
+.bot-list-entry h3,.bot-list-entry>strong {font-size:25px!important;margin:5px 0 9px!important;line-height:1.2!important}
+.bot-list-entry>.product-top {grid-column:1/-1;display:flex;justify-content:flex-start;gap:16px;align-items:center}
+.bot-list-entry>.lead,.bot-list-entry>span:not(.status),.bot-list-entry>p {grid-column:1;max-width:680px;margin:0!important;color:#c1d6e8!important;font-size:14px!important}
+.bot-list-entry>.bot-list-tags {grid-column:1;display:flex;gap:7px;flex-wrap:wrap}
+.bot-list-tags span {font-size:11px;color:#c0dff4;border:1px solid #355a7b;background:#102a44;padding:5px 9px;border-radius:6px}
+.bot-list-entry>.actions {grid-column:2;grid-row:2 / span 4;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;margin:0!important}
+.bot-list-entry>.actions>* {max-width:100%;width:100%;text-align:center;justify-content:center}
+.bot-list-entry>.bot-demo-thumb {grid-column:2;grid-row:2;max-width:300px;margin:0!important}
+.bot-list-entry:has(>.bot-demo-thumb)>.actions {grid-row:3 / span 4}
+.bot-list-entry>.bot-list-details {grid-column:1}
+.bot-list-entry>.bot-list-side {grid-column:2;justify-self:end}
+.bot-list-eyebrow,.bot-list-status {font-size:11px;font-weight:900;letter-spacing:1px;color:#9bd7ff}
+.bot-list-entry>.bot-list-details h3 {margin:7px 0!important}
+.bot-list-entry>.bot-list-details p {color:#bed2e5;font-size:14px;max-width:680px}
+.bot-list-entry>.bot-list-details .bot-list-tags {display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.bot-list-entry>.product-top~h3 {grid-column:1}
+.bot-list-entry>.product-top~.lead {grid-column:1}
+.bot-list-entry>.product-top~.bot-list-tags {grid-column:1}
+.bot-list-entry .bot-demo-thumb {justify-self:stretch}
+.pages-logo-mark{color:#58baf5;font:900 23px/1 Consolas,monospace;margin-right:8px}
+.repo-wordmark{display:flex!important;align-items:center!important;color:#f0f7ff!important;gap:4px}
+.repo-wordmark b{color:#58baf5}
+.repo-wordmark small{font-size:10px;letter-spacing:.2px}
+@media(max-width:750px){
+ .bot-vertical-list>.bot-list-entry {display:flex!important;flex-direction:column!important;padding:18px!important;gap:12px!important}
+ .bot-list-entry>.actions {width:100%}
+ .bot-list-entry>.bot-demo-thumb {max-width:100%}
+ .bot-list-entry>.bot-list-side {align-self:flex-start}
+}
+</style><style id="simple-bot-checkout-list">
+.bot-vertical-list{display:flex!important;flex-direction:column!important;gap:0!important;margin:0 0 18px!important}
+.bot-vertical-list>.bot-list-entry{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:15px!important;min-height:0!important;padding:13px 18px!important;margin:0!important;border:0!important;border-bottom:1px solid #34506c!important;border-radius:0!important;background:#102237!important}
+.bot-vertical-list>.bot-list-entry:first-child{border-radius:9px 9px 0 0!important}
+.bot-vertical-list>.bot-list-entry:last-child{border-radius:0 0 9px 9px!important}
+.compact-bot-name{font-size:16px;font-weight:850;color:#edf8ff}
+.compact-bot-options{display:flex;gap:12px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.compact-bot-options .download-choice{width:auto!important;min-width:125px;justify-content:flex-start;text-align:left!important;margin:0!important}
+.compact-bot-unavailable{font-size:10px;letter-spacing:.4px;color:#90a9bd}
+@media(max-width:600px){.bot-vertical-list>.bot-list-entry{flex-direction:column!important;align-items:flex-start!important}.compact-bot-options{justify-content:flex-start}}
+</style><style id="coming-soon-simple-list">.coming-soon-label{display:inline-flex;align-items:center;padding:7px 12px;border:1px solid #536476;border-radius:7px;background:#182535;color:#b8c8d8;font-size:11px;font-weight:900;letter-spacing:.7px}.bot-vertical-list #other{display:none}</style>
+<style id="bot-category-info-20261105">
+.category-info{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;
+  width:27px;height:27px;margin-left:8px;border:1px solid #69b9e9;border-radius:50%;
+  background:#173452;color:#ccecff;font-size:13px;font-weight:800;cursor:pointer}
+.category-info:hover,.category-info:focus-visible{background:#265a82;outline:2px solid #7dc9f4;outline-offset:2px}
+.category-info-description{display:block;max-width:650px;margin:10px 0 0;padding:12px 15px;
+  border:1px solid #3b668b;border-radius:8px;background:#10283e;color:#d7eaf8;
+  font-size:14px;font-weight:400;line-height:1.55}
+.category-info-description[hidden]{display:none!important}
+</style>
+<style id="learn-moved-cards-20261105">#premium .bot-vertical-list>.small-card{background:linear-gradient(145deg,#17375b,#0c2037);border:1px solid #396b99;border-radius:12px;padding:20px}#premium .bot-vertical-list>.small-card .compact-bot-name{font-weight:850}</style><style id="trader-repository-basic-light-blue-grey-20261107">
+:root{color-scheme:light;--bg:#edf3f7;--panel:#e2ebf2;--line:#bdcdd9;--white:#304a5e;--muted:#5e7689;--cyan:#507f9e;--green:#37775f;--gold:#a57939;--toy-orange:#507f9e;--toy-blue:#507f9e;--toy-green:#37775f}
+html,body{background:#edf3f7!important;color:#304a5e!important}
+.topbar{background:#e0eaf1f7!important;border-bottom:1px solid #b7cad8!important}
+.topbar .links,.topbar .links a,.topbar .brand{color:#3a596f!important}
+.topbar .links a:hover{color:#2c668a!important}
+.hero h1,.heading h2,.product h3,.feature h3,.tile h3,.small-card strong,dialog h2{color:#29465c!important}
+.hero h1 em,.eyebrow,.kicker,.heading .kicker{color:#527f9e!important}
+.hero p,.heading p,.lead,.feature p,.tile p,.small-card span,.notice,.fine{color:#5b7385!important}
+.section,footer{border-color:#c4d3de!important}
+.product,.small-card,.tile,.feature,.ownership-feature,.beebot-roadmap-banner,.btm-launch,.btm-compat{
+ background:#e0eaf1!important;border:1px solid #b8cbd8!important;color:#304a5e!important;box-shadow:0 2px 8px #46657b12!important}
+.product:hover,.small-card:hover{background:#d5e4ed!important;border-color:#93b1c5!important}
+.feature-visual,.hive-diagram,.thinkbox-art,.thinkbox-shot,.chart-thumb-strip a{background:#d5e2eb!important;border-color:#b5cbd9!important}
+.feature-visual span,.feature-visual .big,.glyph,.tile .symbol{color:#547f9c!important}
+.pill,.pill:not(.secondary),.pill.secondary,.product-detail-link,.slideshow-home-link,
+.actions button,.small-card button,.feature button,.tile button.more,
+#intelligence .tile .actions button.more,#beebot-banner .tile .actions button.more{
+ background:#c9deeb!important;color:#2e5773!important;border:1px solid #9bb8cb!important;box-shadow:none!important}
+.pill:hover,.actions button:hover,.small-card button:hover,.feature button:hover,.product-detail-link:hover{background:#b7d1e2!important;color:#234b65!important}
+button:disabled,.actions button:disabled{opacity:.5!important;cursor:not-allowed!important}
+.download-choice:not(.paid),.download-choice:not(.paid):hover,.download-choice:not(.paid):has(input:checked),
+.download-choice.paid,.download-choice.paid:has(input:checked){
+ background:#f4f9fc!important;color:#355a72!important;border:1px solid #a8c0d0!important;box-shadow:none!important}
+.download-choice:has(input:checked){background:#c5ddeb!important;border-color:#658fab!important}
+.download-choice input{accent-color:#4d819f!important}
+.hal-think-product-tag,.btm-status,.btm-bot-badges span,.btm-path,.btm-check,.btm-check strong,
+#intelligence .thinkbox-beta,.ownership-bot,.ownership-registry{
+ background:#f1f7fa!important;color:#436d88!important;border-color:#b3c9d8!important}
+.ownership-feature h3,.ownership-feature p,.ownership-feature .ownership-caption strong,
+.ownership-file,.ownership-code,.ownership-status,.btm-feature strong,.btm-research-strip span{color:#3a5b70!important}
+#purchaseCart .box,#bitcoinCheckout,.payment-panel,.restore,.license,.btm-research,.btm-feature,.btm-research-strip{
+ background:#e0eaf1!important;color:#304a5e!important;border-color:#b8cbd8!important}
+#purchaseCart .box h3,#bitcoinCheckout .head,#purchaseCart .free{color:#345d77!important}
+#purchaseCart .createBtn,#bitcoinCheckout .btn,#bitcoinCheckout .btn.gold,#bitcoinCheckout .btn.secondary{
+ background:#c2dbe9!important;color:#2c5570!important;border:1px solid #93b5ca!important;box-shadow:none!important}
+#bitcoinCheckout .field,#bitcoinCheckout .field input,#bitcoinCheckout .restore-row input,
+input,select,textarea{color:#304a5e!important}
+#bitcoinCheckout .field input,#bitcoinCheckout .restore-row input,input,select,textarea{
+ background:#f9fcfe!important;border-color:#a9c0d0!important}
+#bitcoinCheckout .payment-panel code,#bitcoinCheckout .copyrow button{color:#386e90!important}
+#bitcoinCheckout .download-cart-row,#bitcoinCheckout .copyrow{border-color:#b8cbd8!important}
+#bitcoinCheckout .download-cart-row b,#bitcoinCheckout .download-cart-total{color:#304a5e!important}
+dialog,#botDemoDialog,#shotZoom{background:#edf3f7!important;color:#304a5e!important;border-color:#a8c3d5!important}
+dialog p,dialog li,.bot-demo-disclaimer{color:#5b7385!important}
+dialog::backdrop{background:#233e5480!important}
+dialog .close,#botDemoDialog .bot-demo-close,#shotZoom button{background:#c4dce9!important;color:#315c78!important;border-color:#9dbbcf!important}
+.bot-demo-thumb,.bot-demo-play{border-color:#a4bfd1!important}
+.bot-demo-thumb .bot-demo-overlay{background:linear-gradient(180deg,transparent 25%,#21394e88 100%)!important}
+.bot-demo-thumb .bot-demo-label{color:#fff!important}
+.bot-demo-thumb .bot-demo-play{background:#dcebf3!important;color:#3e7394!important;box-shadow:none!important}
+.chart-thumb-strip span,.thinkbox-shot span{color:#365f79!important}
+footer,.install-footnote{background:#e5eef4!important;color:#647d8f!important}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style><style id="trader-repository-basic-remaining-dark-panels-fix">
+ /* Finish converting legacy bot rows, HAL cards and compatibility banners */
+ .bot-vertical-list,.bot-vertical-list .bot-list-entry,.bot-list-entry,.bot-card,.card.bot-card,
+ .tr-compat,.btm-launch,.btm-compat,.bot-demo-gallery,.compat-strip,
+ .ownership-graphic,.ownership-registry,.ownership-bot{
+ background:#dfeaf1!important;border-color:#b8cbd8!important;color:#304a5e!important;
+ box-shadow:none!important}
+ .bot-vertical-list .bot-list-entry:nth-child(even){background:#eaf2f7!important}
+ .bot-vertical-list .bot-list-entry:hover,.bot-card:hover{background:#d2e3ed!important}
+ .bot-card .ct,.bot-card .meta,.bot-card .bot-title,.bot-card .tags,
+ .bot-card .bot-feature-title,.bot-card .bot-list,.bot-card .editions,
+ .bot-card .compat-strip,.bot-card .compat-pill,.bot-card .compat-note{
+ color:#3d5c70!important;border-color:#b6cbd9!important}
+ .bot-card h2,.bot-card h3,.bot-card strong,.bot-card .bot-title,
+ .bot-list-entry .compact-bot-name,.bot-vertical-list strong,
+ .tr-compat strong,.tr-compat h2,.tr-compat h3{
+ color:#29495e!important}
+ .bot-card p,.bot-card li,.bot-card small,.bot-card .meta b,.bot-card .tags span,
+ .bot-card .compat-note,.tr-compat p,.tr-compat small,.tr-compat .tr-muted{
+ color:#587388!important}
+ .bot-card .tags span,.bot-card .compat-pill,.bot-card .editions label,
+ .bot-card .editions label.basic-free,.bot-card .editions label.premium,
+ .bot-card .editions label span,.bot-card .editions label small{
+ background:#f3f8fb!important;border-color:#adc5d5!important;color:#3c6079!important}
+ .bot-card .editions label:has(input:checked){background:#c9e0ed!important;border-color:#709ab6!important}
+ .bot-card .bot-feature-title,.bot-card .meta b,.compat-label{color:#4e7792!important}
+ .bot-card .bot-list li::marker{color:#688ea7!important}
+ .bot-vertical-list .bot-list-entry,.bot-list-entry{border-bottom:1px solid #b6cbd9!important}
+ .bot-list-entry .compact-bot-options button,.bot-list-entry .compact-bot-options a,
+ .bot-card button,.bot-card .product-detail-link{
+ background:#c5dce9!important;color:#2c5774!important;border:1px solid #9bbace!important}
+ .bot-list-entry .compact-bot-options button:hover,.bot-card button:hover{background:#b6d3e5!important}
+ .tr-compat .tr-platform-card,.tr-compat .tr-os-unavailable{
+ background:#f4f9fc!important;color:#385970!important;border-color:#b8cbd8!important}
+ .tr-compat .tr-platform-copy strong,.tr-compat .tr-os-unavailable strong{color:#31556d!important}
+ .tr-compat .tr-platform-copy small,.tr-compat .tr-os-unavailable span{color:#5e788a!important}
+ .tr-compat .tr-platform-card.broker .tr-platform-icon{background:#fff!important}
+ .category-info-description{color:#516e82!important;background:#f4f9fc!important;border-color:#b9cdda!important}
+ </style><style id="basic-final-contrast-fix-logo-coming-soon-total">
+/* Final legibility pass: original dark-theme selectors retained high specificity. */
+.repo-wordmark,.repo-wordmark span:not(.pages-logo-mark),.repo-wordmark b,.repo-wordmark small,
+.topbar .repo-wordmark,.topbar .repo-wordmark b,.topbar .repo-wordmark small{
+ color:#31536b!important;text-shadow:none!important;opacity:1!important}
+.repo-wordmark b{color:#477fa3!important}
+.repo-wordmark small{color:#688599!important}
+.repo-wordmark .pages-logo-mark{color:#5087a9!important}
+.coming-soon-label,.bot-card .coming-soon-label,.bot-list-entry .coming-soon-label,
+#other .coming-soon-label,#premium .coming-soon-label,
+.coming-soon,.status.coming-soon{
+ background:#c6d9e7!important;color:#355c78!important;
+ border:1px solid #92b2c7!important;opacity:1!important;text-shadow:none!important}
+#selectedList .download-cart-total,#selectedList .download-cart-total strong,
+#selectedList .download-cart-row b,#selectedList .download-cart-row small,
+#purchaseCart .download-cart-total,#purchaseCart .download-cart-total strong,
+#purchaseCart .download-cart-row b,#purchaseCart .download-cart-row small{
+ color:#31536b!important;opacity:1!important;text-shadow:none!important}
+#purchaseCart .download-cart-total{border-top:1px solid #a5bdce!important}
+#purchaseCart .download-cart-row{border-bottom-color:#b5c9d8!important}
+#purchaseCart .note,#purchaseCart .box .note{color:#5d778a!important}
+</style><style id="symbol-clash-whole-feature-highlight">
+/* Symbol Clash Protection: emphasize the complete feature, not only ownership.json. */
+#premium .ownership-feature,.ownership-feature{
+ background:linear-gradient(115deg,#c5dbe9 0%,#d8e8f2 100%)!important;
+ border:2px solid #5b91b3!important;
+ border-left:7px solid #367aa6!important;
+ box-shadow:0 9px 26px rgba(49,94,126,.20),0 2px 5px rgba(49,94,126,.12)!important;
+ padding:24px 26px!important;
+ border-radius:14px!important;
+}
+.ownership-feature h3{color:#174f73!important;font-size:clamp(24px,2.7vw,32px)!important}
+.ownership-feature p,.ownership-feature .ownership-note{color:#3e6179!important}
+.ownership-feature .ownership-caption strong{color:#1c668f!important}
+.ownership-feature .ownership-bot{background:#eef6fb!important;border:1px solid #8aafc7!important;color:#254e69!important}
+.ownership-feature .ownership-bot small{color:#557c96!important}
+.ownership-feature .ownership-registry{background:#f5faff!important;border:2px solid #74a1bd!important;box-shadow:0 3px 12px #426c881c!important}
+.ownership-feature .ownership-file{color:#1b587e!important;font-weight:900!important}
+.ownership-feature .ownership-code{color:#2b5875!important}
+.ownership-feature .ownership-status{color:#236a59!important;border-color:#b1cbd9!important}
+.ownership-feature .ownership-arrow{color:#317ca7!important}
+@media(max-width:780px){#premium .ownership-feature,.ownership-feature{padding:19px!important}}
+</style><style id="trader-repository-blue-header-dashboard-theme">
+/* Reference: IF/THEN dashboard — navy-blue header, icy-blue page, white panels, green primary actions. */
+:root{color-scheme:light!important;--bg:#edf4f9!important;--panel:#fff!important;--line:#bfd2df!important;--white:#193d56!important;--text:#193d56!important;--muted:#597b94!important;--cyan:#168fa1!important;--blue:#245d7d!important;--soft:#e4eef5!important;--green:#008f80!important}
+html,body{background:#edf4f9!important;color:#193d56!important}
+header,.topbar{background:#173b54!important;border-color:#2d6078!important;color:#fff!important}
+header .brand,header .brand *,header .nav a,.topbar .brand,.topbar .brand *, .topbar .links a{color:#f4fbff!important}
+header .tr-wordmark-muted,.topbar .brand b{color:#7ed7e8!important}
+header .tr-logo .tr-cursor{background:#7ed7e8!important}
+header .nav a:hover,.topbar .links a:hover{color:#8fe3f0!important}
+h1,h2,h3,h4,.heading h2,.product h3,.bot-card h3{color:#193e5b!important}
+p,.lead,.meta,.notice,.heading p,.bot-card p{color:#5b7b91!important}
+.eyebrow,.kicker,.status{color:#287d9d!important}
+a{color:#216e92!important}
+.product,.tile,.feature,.small-card,.bot-card,.bot-list-entry,.bot-vertical-list,.ownership-feature,.browse-panel,.battle-panel,.orderbook-compat,.orderbook-checkout,.local-first-panel,.download-checkout-panel,
+#purchaseCart .box,#bitcoinCheckout,.payment-panel,.restore,.license,.btm-launch,.btm-compat{background:#fff!important;border:1px solid #bdd1df!important;color:#193d56!important;box-shadow:0 3px 11px #214b6710!important}
+.product:hover,.bot-list-entry:hover,.small-card:hover{background:#f1f8fc!important;border-color:#94b8ce!important}
+.feature-visual,.hive-diagram,.thinkbox-art,.thinkbox-shot,.ownership-registry,.ownership-bot,.ownership-file,.ownership-graphic,.category-explainer,.orderbook-compat-item{background:#e5f0f7!important;border-color:#b4ccdc!important;color:#234d68!important}
+.ownership-feature{border-left:5px solid #168a9e!important;background:#e0eff7!important}
+.ownership-feature h3,.ownership-feature strong,.ownership-code{color:#1d5474!important}
+.browse-panel,.battle-panel{background:#e3eef6!important;border-color:#b9cfdf!important}
+#catalog article.card,#catalog article.card[data-availability='coming-soon']{background:#dceaf4!important;border:1px solid #b5cbdc!important;color:#21465e!important;box-shadow:0 2px 7px #214b6710!important}
+#catalog article.card:hover{background:#cfe3f0!important;border-color:#8db5ce!important}
+#catalog article.card h2{color:#1b4664!important}
+#catalog article.card p{color:#57778d!important}
+#catalog article.card .details-link{color:#206c93!important}
+input,select,textarea,.browse-controls input,.browse-controls select{background:#fff!important;color:#23465d!important;border-color:#b2c9d9!important}
+.download-choice,.download-choice.paid,.download-choice:not(.paid){background:#f3f9fc!important;color:#275777!important;border:1px solid #a7c4d6!important}
+.download-choice:has(input:checked){background:#d2e8f2!important;border-color:#6ba9bd!important}
+button,.pill,.pill.secondary,.actions button,.small-card button,.feature button,.product-detail-link,.orderbook-action,.filter{background:#d6e8f3!important;color:#1f597b!important;border:1px solid #9bbbd0!important;box-shadow:none!important}
+button:hover,.pill:hover,.actions button:hover,.orderbook-action:hover{background:#c3ddeb!important;color:#154a6a!important}
+/* Keep action buttons distinctly green, as in the IF/THEN dashboard. */
+.actions .cart-add,.actions .cart-control,#purchaseCart .createBtn,#bitcoinCheckout .btn:not(.secondary):not(.gold),.orderbook-action:not(.secondary),.download-choice:not(.paid):has(input:checked),.filter.active{background:#008f80!important;border-color:#008577!important;color:#fff!important}
+.actions .cart-add:hover,.actions .cart-control:hover,#purchaseCart .createBtn:hover,#bitcoinCheckout .btn:not(.secondary):not(.gold):hover,.orderbook-action:not(.secondary):hover{background:#007d72!important;color:#fff!important}
+.download-choice:not(.paid):has(input:checked) input{accent-color:#fff!important}
+#purchaseCart .download-cart-total,#purchaseCart .download-cart-total *,#bitcoinCheckout .download-cart-total,.download-cart-row b{color:#193d56!important}
+footer{background:#e1edf5!important;color:#597b94!important;border-color:#b9cfdf!important}
+/* Keep video/screenshot media dark only inside their actual player frame. */
+video,.bot-demo-thumb video{background:#101f2c!important}
+</style><style id="why-ibkr-banner-checkout">
+#why-ibkr.ibkr-banner{background:#13324a!important;border:1px solid #366481!important;border-radius:14px;padding:26px 28px;margin:28px 0 36px;color:#e9f4fb!important;box-shadow:0 7px 22px #16374c1b!important}
+#why-ibkr .ibkr-banner-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+#why-ibkr .ibkr-eyebrow{font-size:11px;font-weight:800;letter-spacing:.13em;color:#ffa33d!important;margin-bottom:6px}
+#why-ibkr h2{font-size:clamp(20px,2.3vw,25px);line-height:1.25;margin:0;color:#f2f8fc!important}
+#why-ibkr .ibkr-pills{display:flex;gap:7px;flex-wrap:wrap}
+#why-ibkr .ibkr-pills span{background:#244d69!important;color:#e5f4fc!important;border:1px solid #5b8ba8;border-radius:5px;font-size:11px;font-weight:800;padding:7px 9px}
+#why-ibkr .ibkr-columns{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+#why-ibkr h3{font-size:14px;margin:0 0 9px;color:#f0f7fb!important}
+#why-ibkr p{font-size:13px;line-height:1.65;margin:0 0 11px;color:#c7dbe9!important}
+#why-ibkr strong{color:#e5f2fa!important}
+#why-ibkr a{color:#8bd7ff!important;text-decoration:underline}
+#why-ibkr .ibkr-footnote{font-size:11px;color:#a9c3d5!important}
+@media(max-width:700px){#why-ibkr.ibkr-banner{padding:21px 18px}#why-ibkr .ibkr-columns{grid-template-columns:1fr;gap:14px}}
+</style><style id="checkout-navy-feature-banner-unification">
+/* Match the Why IBKR banner: deep navy, orange kicker, white copy. */
+#trader-repository-compatibility-20261020.tr-compat,
+#premium .ownership-feature.ownership-feature{
+ background:#13324a!important;color:#e9f4fb!important;
+ border:1px solid #366481!important;border-radius:14px!important;
+ box-shadow:0 7px 22px #16374c1b!important;
+ padding:26px 28px!important;
+}
+#trader-repository-compatibility-20261020>strong,
+#premium .ownership-feature .kicker{color:#ffa33d!important;letter-spacing:.1em!important}
+#premium .ownership-feature h3{color:#f2f8fc!important}
+#premium .ownership-feature p,
+#premium .ownership-feature .ownership-note{color:#c7dbe9!important}
+#trader-repository-compatibility-20261020 .tr-platform-card,
+#trader-repository-compatibility-20261020 .tr-os-unavailable,
+#premium .ownership-feature .ownership-bot,
+#premium .ownership-feature .ownership-registry{
+ background:#1b4059!important;border:1px solid #47728d!important;
+ color:#e5f2fa!important;box-shadow:none!important;
+}
+#trader-repository-compatibility-20261020 .tr-platform-copy strong,
+#trader-repository-compatibility-20261020 .tr-os-unavailable strong,
+#premium .ownership-feature .ownership-file,
+#premium .ownership-feature .ownership-caption strong{color:#f2f8fc!important}
+#trader-repository-compatibility-20261020 .tr-platform-copy small,
+#trader-repository-compatibility-20261020 .tr-os-unavailable span,
+#premium .ownership-feature .ownership-bot small,
+#premium .ownership-feature .ownership-code{color:#b8d5e6!important}
+#premium .ownership-feature .ownership-status{color:#8cdec4!important;border-color:#47728d!important}
+#premium .ownership-feature .ownership-arrow{color:#82c9ec!important}
+#trader-repository-compatibility-20261020 .tr-platform-card.windows{background:#214d6c!important;border-color:#5b8ba8!important}
+#trader-repository-compatibility-20261020 .tr-platform-card.broker .tr-platform-icon{background:#fff!important}
+@media(max-width:700px){#trader-repository-compatibility-20261020.tr-compat,#premium .ownership-feature.ownership-feature{padding:21px 18px!important}}
+</style><style id="symbol-clash-navy-contrast-layout-fix">
+/* Symbol Clash: consistent dark banner with legible diagram and clear visual hierarchy. */
+#premium .ownership-feature{
+ display:grid!important;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)!important;
+ align-items:center!important;gap:26px!important;
+ background:#13324a!important;border:1px solid #366481!important;
+ padding:26px 28px!important;
+}
+#premium .ownership-feature .ownership-copy{min-width:0!important}
+#premium .ownership-feature .kicker{color:#ffa33d!important}
+#premium .ownership-feature h3{color:#f2f8fc!important;font-size:clamp(23px,2.4vw,29px)!important}
+#premium .ownership-feature p,#premium .ownership-feature .ownership-note{color:#c7dbe9!important}
+#premium .ownership-feature .ownership-graphic{
+ display:grid!important;grid-template-columns:minmax(0,1fr) 24px minmax(0,1.12fr)!important;
+ align-items:center!important;gap:10px!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ color:#e9f4fb!important;padding:0!important;min-width:0!important;width:100%!important;
+}
+#premium .ownership-feature .ownership-branch{min-width:0!important;gap:8px!important}
+#premium .ownership-feature .ownership-bot{
+ background:#214a65!important;border:1px solid #4e809e!important;color:#f3f9fd!important;
+ padding:11px 12px!important;font-size:11px!important;font-weight:800!important;
+}
+#premium .ownership-feature .ownership-bot small{color:#9dd7f0!important}
+#premium .ownership-feature .ownership-arrow{
+ color:#ffa33d!important;font-size:23px!important;text-align:center!important;
+}
+#premium .ownership-feature .ownership-registry{
+ min-width:0!important;background:#1c435c!important;
+ border:1px solid #5b8ba8!important;border-radius:9px!important;
+ box-shadow:none!important;padding:14px!important;
+}
+#premium .ownership-feature .ownership-file{
+ color:#f3f9fd!important;font-size:12px!important;font-weight:900!important;
+ border-bottom:1px solid #547a92!important;padding-bottom:9px!important;
+}
+#premium .ownership-feature .ownership-code{
+ color:#bde4f7!important;font-size:11px!important;line-height:1.8!important;
+ overflow-wrap:anywhere!important;
+}
+#premium .ownership-feature .ownership-code span{color:#bde4f7!important}
+#premium .ownership-feature .ownership-status{
+ color:#9be6c7!important;border-color:#547a92!important;font-weight:800!important;
+}
+@media(max-width:850px){
+ #premium .ownership-feature{grid-template-columns:1fr!important}
+ #premium .ownership-feature .ownership-graphic{max-width:660px!important}
+}
+@media(max-width:480px){
+ #premium .ownership-feature .ownership-graphic{grid-template-columns:1fr!important}
+ #premium .ownership-feature .ownership-arrow{transform:rotate(90deg)}
+}
+</style><style id="checkout-integrated-blue-feature-banners">
+/* Integrate feature banners with the light blue checkout; no category owns these panels. */
+#why-ibkr.ibkr-banner,
+#premium .ownership-feature.ownership-feature,
+.ownership-feature.ownership-feature,
+#trader-repository-compatibility-20261020.tr-compat{
+ background:#d7e7f1!important;background-image:none!important;
+ border:1px solid #aac5d7!important;border-left:4px solid #4e91b4!important;
+ border-radius:12px!important;box-shadow:0 3px 12px rgba(31,73,105,.08)!important;
+ color:#25485e!important;margin:22px 0!important;
+}
+#why-ibkr h2,#why-ibkr h3,#why-ibkr strong,
+.ownership-feature h3,.ownership-feature strong,
+#trader-repository-compatibility-20261020 strong,
+#trader-repository-compatibility-20261020 h3{color:#234c67!important}
+#why-ibkr p,#why-ibkr li,#why-ibkr small,
+.ownership-feature p,.ownership-feature .ownership-note,
+#trader-repository-compatibility-20261020 p,
+#trader-repository-compatibility-20261020 small{color:#4d6e82!important}
+#why-ibkr .kicker,#why-ibkr .eyebrow,
+.ownership-feature .kicker,
+#trader-repository-compatibility-20261020>strong{color:#2d7da1!important}
+.ownership-feature.ownership-feature{display:grid!important;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;gap:24px!important;align-items:center!important;padding:25px 28px!important}
+.ownership-feature .ownership-copy{min-width:0!important}
+.ownership-feature .ownership-graphic.ownership-graphic{background:transparent!important;box-shadow:none!important;border:0!important;display:grid!important;grid-template-columns:minmax(0,1fr) 24px minmax(0,1.1fr)!important;gap:10px!important;align-items:center!important;padding:0!important}
+.ownership-feature .ownership-bot.ownership-bot,
+.ownership-feature .ownership-registry.ownership-registry{background:#f5f9fc!important;border:1px solid #b4cbd9!important;color:#294f67!important;box-shadow:none!important;border-radius:8px!important}
+.ownership-feature .ownership-bot small,.ownership-feature .ownership-file,
+.ownership-feature .ownership-code,.ownership-feature .ownership-code span{color:#3c6a84!important}
+.ownership-feature .ownership-file{border-color:#b8cedb!important}
+.ownership-feature .ownership-status{color:#247963!important;border-color:#b8cedb!important}
+.ownership-feature .ownership-arrow{color:#3687ac!important}
+#trader-repository-compatibility-20261020 .tr-platform-card,
+#trader-repository-compatibility-20261020 .tr-os-unavailable{background:#f6fafd!important;border:1px solid #b4cbd9!important;color:#294f67!important}
+#trader-repository-compatibility-20261020 .tr-platform-copy strong,
+#trader-repository-compatibility-20261020 .tr-os-unavailable strong{color:#234c67!important}
+#trader-repository-compatibility-20261020 .tr-platform-copy small,
+#trader-repository-compatibility-20261020 .tr-os-unavailable span{color:#52768b!important}
+#why-ibkr .ibkr-columns>div{color:#294f67!important}
+@media(max-width:850px){.ownership-feature.ownership-feature{grid-template-columns:1fr!important}}
+@media(max-width:480px){.ownership-feature .ownership-graphic.ownership-graphic{grid-template-columns:1fr!important}.ownership-feature .ownership-arrow{transform:rotate(90deg)}}
+</style><style id="windows-compatibility-white-card-fix">.tr-platform-card.windows, .tr-compat .tr-platform-card.windows {background:#ffffff!important;background-image:none!important;color:#294d66!important;border:1px solid #b7ccda!important;box-shadow:0 2px 7px rgba(39,76,104,.07)!important}.tr-platform-card.windows .tr-platform-copy strong,.tr-compat .tr-platform-card.windows .tr-platform-copy strong{color:#294d66!important}.tr-platform-card.windows .tr-platform-copy small,.tr-compat .tr-platform-card.windows .tr-platform-copy small{color:#5b778a!important}.tr-platform-card.windows .tr-platform-icon,.tr-compat .tr-platform-card.windows .tr-platform-icon{color:#277ca8!important;background:#edf5fa!important;border-color:#c4d9e6!important}</style><style id="windows-both-architectures-supported">.tr-os-supported{background:#fff!important;border:1px solid #c4d6e3!important;border-radius:10px!important;color:#294d65!important}.tr-os-supported strong{color:#294d65!important}.tr-os-supported span{color:#54758c!important}</style><style id="compatibility-white-cards-final">
+/* All platform and broker cards are white, including Windows. */
+.tr-compat .tr-platform-grid .tr-platform-card,
+.tr-compat .tr-platform-grid .tr-platform-card.windows,
+.tr-compat .tr-platform-grid .tr-platform-card.broker,
+.tr-compat .tr-platform-grid .tr-platform-card.dev,
+.tr-compat .tr-platform-grid .tr-platform-card.future,
+.tr-compat .tr-os-availability .tr-os-supported{
+ background:#fff!important;background-image:none!important;
+ border:1px solid #c3d4e2!important;color:#29495e!important;
+ box-shadow:0 1px 4px rgba(40,78,102,.07)!important;
+}
+.tr-compat .tr-platform-card .tr-platform-copy strong,
+.tr-compat .tr-os-supported strong{color:#29495e!important}
+.tr-compat .tr-platform-card .tr-platform-copy small,
+.tr-compat .tr-os-supported span{color:#5b7385!important}
+.tr-compat .tr-platform-card .tr-platform-icon{color:#33769b!important}
+.tr-compat .tr-os-availability{grid-template-columns:1fr!important}
+</style><style id="windows-top-white-only">
+/* Windows is represented by the same white card style as its peers. */
+.tr-platform-card.windows,
+.tr-platform-grid .tr-platform-card.windows {
+ background:#ffffff!important;
+ background-image:none!important;
+ border:1px solid #d9e5ee!important;
+ color:#173b54!important;
+ box-shadow:0 3px 12px rgba(19,50,74,.07)!important;
+}
+.tr-platform-card.windows .tr-platform-icon {color:#1b6188!important;background:#eaf4fa!important;border-color:#d9e5ee!important}
+.tr-platform-card.windows .tr-platform-copy strong{color:#173b54!important}
+.tr-platform-card.windows .tr-platform-copy small{color:#4b6b80!important}
+</style><style id="windows-top-card-final-white-fix">
+/* Override the older high-specificity navy Windows card styling. */
+#trader-repository-compatibility-20261020 .tr-platform-grid .tr-platform-card.windows{
+ background:#fff!important;background-image:none!important;border:1px solid #c3d4e2!important;
+ color:#29495e!important;box-shadow:0 1px 4px rgba(40,78,102,.07)!important;
+}
+#trader-repository-compatibility-20261020 .tr-platform-grid .tr-platform-card.windows .tr-platform-copy strong{
+ color:#29495e!important;
+}
+#trader-repository-compatibility-20261020 .tr-platform-grid .tr-platform-card.windows .tr-platform-copy small{
+ color:#5b7385!important;
+}
+#trader-repository-compatibility-20261020 .tr-platform-grid .tr-platform-card.windows .tr-platform-icon{
+ color:#287da7!important;background:#edf5fa!important;
+}
+</style><style id="index-logo-on-checkout">
+/* Same wordmark as index.html, scoped to checkout header */
+.topbar .tr-logo{display:inline-flex!important;align-items:baseline!important;gap:0!important;font:750 clamp(18px,2.5vw,26px)/1.2 ui-monospace,Consolas,monospace!important;letter-spacing:-.03em!important;text-shadow:none!important;white-space:nowrap}
+.topbar .tr-wordmark{color:#f4fbff!important}
+.topbar .tr-wordmark-muted{color:#7ed7e8!important;margin-left:.35em!important;font-weight:500!important}
+.topbar .tr-cursor{display:inline-block!important;width:.5em;height:.86em;background:#7ed7e8!important;border-radius:2px;margin-left:.1em;vertical-align:-.1em;animation:checkoutLogoBlink 1s steps(1,end) infinite}
+@keyframes checkoutLogoBlink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.topbar .tr-cursor{animation:none}}
+@media(max-width:480px){.topbar .tr-logo{font-size:19px!important}}
+</style></head><body>
+<header class="topbar"><div class="wrap nav"><a aria-label="TraderRepos home" class="brand" href="index.html"><span aria-label="TraderRepository" class="tr-logo" role="img"><span class="tr-wordmark">trader</span><span class="tr-wordmark-muted" data-text="repository"></span><span aria-hidden="true" class="tr-cursor"></span></span></a><nav class="links"><a href="index.html">Repository</a><a href="#free">Free Trading Bots</a><a href="#premium">Trading Bots</a><a href="#other">Coming Soon</a></nav></div></header>
+<main class="wrap"><section aria-label="Introduction" class="hero"><div class="eyebrow">TRADER REPOSITORY · TRADING BOT DOWNLOADS</div><h1>Trading <em>Bots.</em></h1><p>Explore each bot's trading workflow, features and release status. Select available beta downloads below and complete checkout at the bottom of this page.</p></section><section aria-labelledby="ibkr-banner-title" class="ibkr-banner" id="why-ibkr"><div class="ibkr-banner-top"><div><div class="ibkr-eyebrow">PLATFORM COMPATIBILITY</div><h2 id="ibkr-banner-title">Windows-first bots, tools &amp; utilities. IBKR-connected trading.</h2></div><div class="ibkr-pills"><span>✓ WINDOWS</span><span>✓ LOCAL SOFTWARE</span><span>✓ IBKR-CONNECTED SOFTWARE</span></div></div><div class="ibkr-columns"><div><h3>Why IBKR?</h3><p>We build our trading bots, tools, and utilities around Interactive Brokers (IBKR) because its API, broad market access, and order-management capabilities support market data, analysis, and automated trading workflows.</p><p>By focusing on a primary broker integration, we can make connections, order handling, and workflows more consistent across our software. Products that require a live IBKR connection use <a href="https://www.interactivebrokers.com/" rel="noopener noreferrer" target="_blank">Interactive Brokers</a>.</p></div><div><h3>What runs where?</h3><p><strong>Trading bots:</strong> Windows-based software for strategy execution, monitoring, and order management. Broker-connected features use IBKR where supported.</p><p><strong>Trading tools:</strong> Charting, backtesting, scanners, and analysis utilities. Available features and broker requirements vary by product.</p><p><strong>Utilities:</strong> Supporting applications for research, tracking, reporting, and workflow management. Some can run locally without a live broker connection.</p><p><span class="ibkr-footnote">For products that connect to IBKR, use Trader Workstation (TWS) or IB Gateway. Check each product page for its specific requirements and capabilities.</span></p></div></div></section><section aria-label="Platform and broker compatibility" class="tr-compat" id="trader-repository-compatibility-20261020"><strong>PLATFORM &amp; BROKER COMPATIBILITY</strong><div class="tr-platform-grid"><div class="tr-platform-card windows"><span class="tr-platform-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M2 5.2 10.5 4v8H2zm9.7-1.4L22 2v10H11.7zM2 13h8.5v8L2 19.8zm9.7 0H22v9l-10.3-1.5z" fill="currentColor"></path></svg></span><div class="tr-platform-copy"><strong>Windows 10/11 — 32-bit &amp; 64-bit</strong><small>Compatible with both 32-bit and 64-bit Windows</small></div></div><div class="tr-platform-card broker"><span class="tr-platform-icon"><span class="tr-ibkr-brand"><b>IB</b>KR</span></span><div class="tr-platform-copy"><strong>Interactive Brokers (IBKR)</strong><small>Supported across all trading bots</small></div></div><div class="tr-platform-card dev"><span class="tr-platform-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 7v5l3 2m6-2a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></span><div class="tr-platform-copy"><strong>MetaTrader 5 (MT5)</strong><small>Integration in development — not yet available</small></div></div><div class="tr-platform-card future"><span class="tr-platform-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 17h16M4 17l5-5 4 3 7-8M16 7h4v4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg></span><div class="tr-platform-copy"><strong>Future broker integrations</strong><small>NinjaTrader, thinkorswim (TOS) &amp; more — planned, not currently supported</small></div></div></div></section>
+<aside aria-labelledby="ownership-title" class="ownership-feature">
+<div class="ownership-copy"><div class="kicker">ONE PORTFOLIO · MULTIPLE BOTS</div><h3 id="ownership-title">Symbol Clash Protection</h3><p>One shared ownership registry helps bots avoid opening competing trades on the same symbol.</p><p class="ownership-note">Designed coordination safeguard. Reliable protection requires atomic claims, broker reconciliation and tested enforcement across all bots.</p></div>
+<div aria-label="Momentum Bot claims MARA in shared local ownership JSON; Trend Bot checks the same registry and skips MARA while ZigZag Bot manages a different symbol." class="ownership-graphic" role="img">
+<div class="ownership-branch"><div class="ownership-bot">↗  MOMENTUM BOT <small>CLAIM MARA</small></div><div class="ownership-bot">╱  TREND BOT <small>CHECK MARA</small></div><div class="ownership-bot">⌁  ZIGZAG BOT <small>CLAIM WULF</small></div></div>
+<div aria-hidden="true" class="ownership-arrow">⇄</div><div class="ownership-registry"><div class="ownership-file">▤  ownership.json</div><div class="ownership-code"><span>{</span><span> "MARA": "Momentum Bot",</span><span> "WULF": "ZigZag Bot"</span><span>}</span></div><div class="ownership-status">✓ MARA OWNED   ·   TREND SKIPS</div></div>
+</div></aside><section class="section" id="free"><div class="heading"><div><div class="kicker">01 · FREE BOTS</div><h2>Free Bots <button aria-controls="free-description" aria-expanded="false" aria-label="About Free Bots" class="category-info" data-category-info="free" type="button">(i)</button><span class="category-info-description" hidden="" id="free-description">Existing CSV-based bots. Fixed trading rules and manual or CSV-driven workflows; no learning engine.</span></h2></div><p>Entry-level bots and CSV-driven order workflows.</p></div><div class="bot-vertical-list"><article class="product bot-list-entry"><div class="compact-bot-name">Mini RSI</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Mini RSI" type="checkbox"/> FREE BETA</label></div></article><article class="product bot-list-entry"><div class="compact-bot-name">Mini Scalper</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Mini Scalper" type="checkbox"/> FREE BETA</label></div></article><article class="product bot-list-entry"><div class="compact-bot-name">IF/Then Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="IF/Then Bot" type="checkbox"/> FREE BETA</label></div></article><div class="product bot-list-entry"><div class="compact-bot-name">Order Book Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Order Book Bot" type="checkbox"/> FREE BETA</label></div></div><div class="product bot-list-entry"><div class="compact-bot-name">ScalpBot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="ScalpBot" type="checkbox"/> FREE BETA</label></div></div></div></section>
+<section class="section" id="premium"><div class="heading"><div><div class="kicker">02 · LEARN BOTS</div><h2>Learn Bots (LERN only)<button aria-controls="premium-description" aria-expanded="false" aria-label="About Learn Bots" class="category-info" data-category-info="premium" type="button">(i)</button><span class="category-info-description" hidden="" id="premium-description">LERN-only bots: Mean Reversion (BNF), Ultimate Scalper and Breakout.</span></h2></div><p>Strategy-specific bots use the LERN System to analyze their trade databases, identify recurring patterns and refine strategy parameters. HAL tranche management is not included.</p></div><div class="bot-vertical-list"><article class="small-card bot-list-entry"><div class="compact-bot-name">Breakout Bot</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></article><article class="small-card bot-list-entry" id="ultimate-scalper"><div class="compact-bot-name">Ultimate Scalper</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></article><article class="small-card bot-list-entry"><div class="compact-bot-name">Mean Reversion Bot (BNF)</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></article></div></section>
+<section class="section" id="other"><div class="heading"><div><div class="kicker">03 · FULLY AUTONOMOUS BOTS</div><h2>Fully Autonomous Bots (LERN + HAL)<button aria-controls="other-description" aria-expanded="false" aria-label="About Fully Autonomous Bots (HAL)" class="category-info" data-category-info="other" type="button">(i)</button><span class="category-info-description" hidden="" id="other-description">LERN + HAL bots: Trend, ZigZag, Momentum, Reversal, ZeRO, Omni, Wheel, Dividend and Mikky.</span></h2></div><p>These bots combine the LERN System for data-driven learning with HAL for autonomous entries, exits, scaling, stops and tranche management.</p></div><div class="bot-vertical-list"><article class="product bot-list-entry"><div class="compact-bot-name">ZigZag Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="ZigZag Bot" type="checkbox"/> FREE BETA</label><label class="download-choice paid"><input class="download-pick" data-bot="ZigZag Bot" data-edition="Premium" type="checkbox"/> LERN + HAL · $1</label></div></article><article class="product bot-list-entry"><div class="compact-bot-name">Trend Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Trend Bot" type="checkbox"/> FREE BETA</label><label class="download-choice paid"><input class="download-pick" data-bot="Trend Bot" data-edition="Premium" type="checkbox"/> LERN + HAL · $1</label></div></article><div class="small-card bot-list-entry"><div class="compact-bot-name">Omni Bot</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></div><div class="small-card bot-list-entry"><div class="compact-bot-name">ZeRO Bot</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></div><div class="small-card bot-list-entry"><div class="compact-bot-name">WheelBot</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></div><div class="small-card bot-list-entry"><div class="compact-bot-name">Dividend Bot</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></div><article class="product bot-list-entry"><div class="compact-bot-name">Momentum Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-local-free="Momentum Bot" type="checkbox"/> FREE BETA</label><label class="download-choice paid"><input class="download-pick" data-bot="Open Momentum Bot" data-edition="Premium" type="checkbox"/> LERN + HAL · $1</label></div></article><article class="product bot-list-entry"><div class="compact-bot-name">Reversal Bot</div><div class="compact-bot-options"><label class="download-choice"><input class="download-pick" data-bot="Reversal Bot" data-edition="Basic" type="checkbox"/> FREE BETA</label><label class="download-choice paid"><input class="download-pick" data-bot="Reversal Bot" data-edition="Premium" type="checkbox"/> LERN + HAL · $1</label></div></article></div></section><section class="section" id="other-trading-bots"><div class="heading"><div><div class="kicker">ADDITIONAL PROJECTS</div><h2>Other Trading Bots</h2><p>Additional trading bot projects in development.</p></div></div><div class="bot-vertical-list"><div class="small-card bot-list-entry"><div class="compact-bot-name">Mikky Bot</div><div class="compact-bot-options"><span class="coming-soon-label">COMING SOON</span></div></div></div></section>
+<section class="section" id="purchaseCart"><div class="heading"><div><div class="kicker">SELECTED TOOLS</div><h2>Your selected bots</h2></div></div><div class="box"><h3>Selected downloads</h3><div id="selectedList"><p>No bots selected yet.</p></div><div class="note">Every Free Beta download is $0. Each Premium Beta upgrade is $1 USD. Prices shown in USD.</div></div><div class="box"><div class="free" id="readyLabel">MAKE A SELECTION</div><p id="selectionSummary">Choose a beta bot or add the free Control Center.</p><button class="createBtn" disabled="" id="continueSelection">CONTINUE WITH SELECTED ITEMS</button></div><div class="notice" id="recoveryShortcut">Already purchased Premium? Select “Restore existing license” below to open your original recovery form.</div><button class="pill secondary" id="openRecovery">RESTORE EXISTING LICENSE</button></section><section class="section checkout" id="bitcoinCheckout" style="display:none">
+<div class="head">PREMIUM · BITCOIN CHECKOUT</div>
+<div class="body">
+<p>Each Premium Beta upgrade is $1 USD. The selected-downloads list shows your itemized total. The Bitcoin quote must match your selected Premium upgrades at $1 USD each. Multi-upgrade quotes require server-side total validation; checkout will stop if the quote cannot be verified. Already paid? Do not pay again — restore your original license below.</p>
+<button class="btn gold" id="quoteBtn">GENERATE BITCOIN QUOTE</button>
+<div class="payment-panel" id="paymentPanel">
+<div id="quoteDetails">Requesting quote…</div>
+<label class="field">Bitcoin transaction ID (TXID)<input autocomplete="off" id="txid" maxlength="64" placeholder="Paste your 64-character transaction ID"/></label>
+<div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn" id="verifyBtn">VERIFY PAYMENT</button><button class="btn secondary" id="statusBtn">CHECK PAYMENT STATUS</button></div>
+<div class="status" id="paymentStatus"></div>
+<div class="license" hidden="" id="issuedLicense"><strong>✓ PAYMENT VERIFIED — SAVE THIS LICENSE KEY</strong><div style="margin:8px 0"><code id="licenseText"></code></div><button class="btn secondary" id="copyLicense">COPY LICENSE KEY</button></div>
+<button class="btn" disabled="" hidden="" id="premiumDownload">DOWNLOAD PREMIUM INSTALLER</button>
+</div>
+<div class="restore">
+<h3 style="margin-top:0">Reinstalling Premium?</h3>
+<p>Enter your original Premium license key. No additional payment is required.</p>
+<div class="restore-row"><input autocomplete="off" id="restoreKey" placeholder="Your Premium license key"/><button class="btn secondary" id="restoreBtn">RESTORE ACCESS</button></div>
+<div class="status" id="restoreStatus"></div>
+<button class="btn" disabled="" hidden="" id="restoredDownload">DOWNLOAD PREMIUM INSTALLER</button>
+</div>
+</div>
+</section><div aria-hidden="true" id="legacyPurchaseSelectors"><article class="card bot-card reversal-basic-card" data-bot="Reversal Bot">
+<div class="ct"><div class="bot-title"><span class="bot-icon">↶</span><div class="meta"><h2>Reversal Bot</h2><b>RSI · REVERSAL</b></div></div></div>
+<p><strong>Find the turn.</strong> Looks for reversal setups using RSI divergence and price confirmation.</p>
+<div class="tags"><span>IBKR</span><span>Trading Bot</span><span>Local CSV Trade Database</span></div>
+<div class="bot-feature-title">Key features</div><ul class="bot-list"><li>RSI divergence + confirmation</li><li>HAL Intelligence</li><li>Searchable local CSV trade history</li><li>IBKR</li><li>Free Basic / Premium Beta</li></ul><div class="editions standalone-editions">
+<label class="basic-free"><input class="edition" name="reversal-edition" type="radio" value="Basic"/><span><strong>BASIC</strong><small>FREE</small></span></label>
+<label class="premium"><input class="edition" name="reversal-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label>
+</div><div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR supported</span><span class="compat-pill testing">MT5 integration in development</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">IBKR is the current trading integration; MT5 integration is in development; NinjaTrader, thinkorswim (TOS) and other broker integrations are planned. MT5 trading support is not yet released. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><article class="card bot-card" data-bot="Trend Bot">
+<div class="ct"><div class="bot-title"><span class="bot-icon">↗</span><div class="meta"><h2>Trend Bot</h2><b>TREND FOLLOWING</b></div></div></div>
+<p><strong>Find the trend. Then make it your own.</strong> Trend-following automation with HAL Think Box: customize supported chart-pattern confirmations, volume, timing and entry conditions through adaptive forms.</p>
+<div class="tags"><span>IBKR</span><span>Trading Bot</span><span>HAL Think Box · Early Beta</span><span>Local CSV Trade Database</span></div>
+<div class="bot-feature-title">Key features</div><ul class="bot-list"><li>Trend-following strategy</li><li>HAL Intelligence</li><li>HAL Think Box: custom pattern-entry rules (early beta)</li><li>Adaptive rule forms for supported patterns, volume, touches, breakouts and trading hours</li><li>Save, edit and review rule-based entry vetoes</li><li>More patterns and conditions planned as they are tested</li><li>Searchable local CSV trade history</li><li>IBKR</li><li>Premium Beta</li></ul><div class="editions premium-only standalone-editions"><label class="premium"><input class="edition" name="trend-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label></div><div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR supported</span><span class="compat-pill testing">MT5 integration in development</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">IBKR is the current trading integration; MT5 integration is in development; NinjaTrader, thinkorswim (TOS) and other broker integrations are planned. MT5 trading support is not yet released. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><article class="card bot-card" data-bot="ZigZag Bot">
+<div class="ct"><div class="bot-title"><span class="bot-icon">⌁</span><div class="meta"><h2>ZigZag Bot</h2><b>PRICE STRUCTURE</b></div></div></div>
+<p><strong>Trade the swings your way.</strong> Combine ZigZag price-structure analysis with HAL Think Box to set your own triangle touches, breakout confirmations, volume and pattern-specific entry rules.</p>
+<div class="tags"><span>IBKR</span><span>Trading Bot</span><span>HAL Think Box · Early Beta</span><span>Local CSV Trade Database</span></div>
+<div class="bot-feature-title">Key features</div><ul class="bot-list"><li>Price-structure strategy</li><li>HAL Intelligence</li><li>HAL Think Box: custom pattern-entry rules (early beta)</li><li>Adaptive rule forms for supported patterns, volume, touches, breakouts and trading hours</li><li>Save, edit and review rule-based entry vetoes</li><li>More patterns and conditions planned as they are tested</li><li>Searchable local CSV trade history</li><li>IBKR</li><li>Premium Beta</li></ul><div class="editions premium-only standalone-editions"><label class="premium"><input class="edition" name="zigzag-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label></div><div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR supported</span><span class="compat-pill testing">MT5 integration in development</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">IBKR is the current trading integration; MT5 integration is in development; NinjaTrader, thinkorswim (TOS) and other broker integrations are planned. MT5 trading support is not yet released. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><article class="card bot-card" data-bot="Scalp Bot" id="miniScalperCard">
+<div class="ct"><div class="bot-title"><span class="bot-icon">◎</span><div class="meta"><h2>Mini Scalper</h2><b>MANUAL SCALPER</b></div></div></div>
+<p><strong>Stage the trade yourself.</strong> Manual chart-based scalping tool for precise entries, protective stops and hands-on position management.</p><button aria-label="Play simulated animation: MANUAL SCALPER · Animated Demo" class="bot-demo-thumb" data-title="MANUAL SCALPER · Animated Demo" data-video="assets/videos/Manual_Scalper_Animated_Demo.mp4" type="button"><video aria-hidden="true" muted="" playsinline="" preload="metadata" tabindex="-1"><source src="assets/videos/Manual_Scalper_Animated_Demo.mp4#t=1" type="video/mp4"/></video><span class="bot-demo-overlay"><span class="bot-demo-play">▶</span><span class="bot-demo-label">WATCH ANIMATED DEMO · SIMULATED</span></span></button>
+<div class="tags"><span>IBKR</span><span>Trading Bot</span></div>
+<div class="bot-feature-title">Key features</div><ul class="bot-list"><li>Manual chart-based trade staging</li><li>Protective stops + position management</li><li>IBKR</li><li>Premium Beta</li></ul><div class="editions premium-only standalone-editions"><label class="premium"><input class="edition" name="scalp-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label></div><div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR supported</span><span class="compat-pill testing">MT5 integration in development</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">IBKR is the current trading integration; MT5 integration is in development; NinjaTrader, thinkorswim (TOS) and other broker integrations are planned. MT5 trading support is not yet released. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><article class="card bot-card" data-bot="IF/Then Bot">
+<div class="ct"><div class="bot-title"><span class="bot-icon">⇄</span><div class="meta"><h2>IF/Then Bot</h2><b>RULE-BASED TRADING</b></div></div></div>
+<p>Build straightforward IF/THEN trade rules and run them as an individual trading tool.</p><button aria-label="Play simulated animation: IF/THEN BOT · Animated Demo" class="bot-demo-thumb" data-title="IF/THEN BOT · Animated Demo" data-video="assets/videos/IF_Then_Bot_Animated_Demo.mp4" type="button"><video aria-hidden="true" muted="" playsinline="" preload="metadata" tabindex="-1"><source src="assets/videos/IF_Then_Bot_Animated_Demo.mp4#t=1" type="video/mp4"/></video><span class="bot-demo-overlay"><span class="bot-demo-play">▶</span><span class="bot-demo-label">WATCH ANIMATED DEMO · SIMULATED</span></span></button>
+<div class="tags"><span>IBKR</span><span>Trading Bot</span></div>
+<div class="bot-feature-title">Key features</div><ul class="bot-list"><li>Rule-based IF/THEN logic</li><li>Custom trade conditions</li><li>IBKR</li><li>Premium Beta</li></ul><div class="editions premium-only standalone-editions"><label class="premium"><input class="edition" name="ifthen-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label></div><div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR supported</span><span class="compat-pill testing">MT5 integration in development</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">IBKR is the current trading integration; MT5 integration is in development; NinjaTrader, thinkorswim (TOS) and other broker integrations are planned. MT5 trading support is not yet released. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><article class="card bot-card" data-bot="Open Momentum Bot" id="momentumCard">
+<div class="ct"><div class="bot-title"><span class="bot-icon">↗</span><div class="meta"><h2>Momentum Bot</h2><b>AUTOMATED SCALPING</b></div></div></div>
+<p><strong>Momentum meets autonomy.</strong> Scan and filter candidates, qualify a setup, then automate the opening long and confirmed reversal short cycle.</p>
+<div class="tags"><span>IBKR</span><span>Automated Trading Bot</span></div>
+<div class="bot-feature-title">Key features</div><ul class="bot-list"><li>Momentum scanner + candidate filters</li><li>Opening long / confirmed reversal short</li><li>Protective stops + trailing management</li><li>Live chart + activity updates</li></ul>
+<a class="momentum-live-demo" href="assets/videos/demo_change_stop_order_momentum_bot.mp4" rel="noopener" target="_blank"><span aria-hidden="true" class="demo-play">▶</span> WATCH LIVE DEMO ↗</a><div class="editions premium-only standalone-editions"><label class="premium"><input class="edition" name="momentum-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label></div><div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR supported</span><span class="compat-pill testing">MT5 integration in development</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">IBKR is the current trading integration; MT5 integration is in development; NinjaTrader, thinkorswim (TOS) and other broker integrations are planned. MT5 trading support is not yet released. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><article aria-label="Advanced Chart standalone download promotion" class="advanced-chart-promo bot-card" data-bot="Advanced Chart" id="advancedChartCard">
+<div><div class="chart-promo-eyebrow">STANDALONE TRADING TOOL · BETA</div><h2>Advanced Chart.<br/><em>Your data. Your drawings.</em></h2>
+<p>A professional charting workspace connected directly to your broker's market data. Analyze the market locally, with your own private drawings and technical tools.</p>
+<div class="chart-promo-points"><span>IBKR-connected pricing · MT5 integration in development</span><span>Fibonacci, Wyckoff and pattern drawing tools</span><span>Indicators, multi-timeframe views and chart pop-out</span><span>Local workspace — chart drawings stay private</span></div>
+<div class="editions premium-only standalone-editions" style="max-width:310px;margin:12px 0"><label class="premium"><input class="edition" name="advanced-chart-edition" type="radio" value="Premium"/><span><strong>PREMIUM BETA</strong><small>$1</small></span></label></div><div class="chart-promo-actions"><button class="chart-download" disabled="" title="Advanced Chart installer download has not been published" type="button">↓ DOWNLOAD BETA · SOON</button></div>
+<p class="chart-promo-note">Download will activate when the standalone installer is published. Live data requires your broker's market-data subscription.</p></div>
+<div class="chart-promo-screen"><div class="screen-head"><strong>ADVANCED CHART · ABC · 5 MIN</strong><span>LOCAL WORKSPACE</span></div>
+<svg aria-label="Illustrative technical analysis candlestick chart with trendlines and Fibonacci levels" role="img" viewbox="0 0 480 300"><rect fill="#091925" height="300" rx="6" width="480"></rect><g stroke="#244152" stroke-width="1"><path d="M15 45H465M15 90H465M15 135H465M15 180H465M15 225H465M15 270H465M95 15V285M185 15V285M275 15V285M365 15V285"></path></g><g stroke-width="2"><path d="M42 207V258M70 194V239M98 173V220M126 185V229M154 151V198M182 129V181M210 145V190M238 109V163M266 92V142M294 109V153M322 77V132M350 63V114M378 87V137M406 49V105" stroke="#60cddd"></path></g><g fill="#42d6b1"><rect height="22" width="12" x="36" y="224"></rect><rect height="22" width="12" x="64" y="208"></rect><rect height="23" width="12" x="92" y="185"></rect><rect height="24" width="12" x="148" y="165"></rect><rect height="25" width="12" x="176" y="142"></rect><rect height="27" width="12" x="232" y="120"></rect><rect height="26" width="12" x="260" y="105"></rect><rect height="29" width="12" x="316" y="88"></rect><rect height="26" width="12" x="344" y="75"></rect><rect height="28" width="12" x="400" y="61"></rect></g><g fill="#f38d9b"><rect height="22" width="12" x="120" y="198"></rect><rect height="22" width="12" x="204" y="158"></rect><rect height="23" width="12" x="288" y="122"></rect><rect height="24" width="12" x="372" y="101"></rect></g><path d="M25 262L190 160L290 190L434 32" fill="none" stroke="#ffd36e" stroke-dasharray="6 5" stroke-width="2"></path><path d="M90 234L200 65L300 195L385 91L440 210" fill="#648cff16" stroke="#9bb5ff" stroke-width="2"></path><g fill="#c4d8f5" font-size="13" font-weight="bold"><text x="85" y="253">X</text><text x="193" y="55">A</text><text x="295" y="214">B</text><text x="380" y="80">C</text><text x="436" y="229">D</text></g><g stroke="#3b718c" stroke-dasharray="4 5"><path d="M20 112H460M20 165H460M20 220H460"></path></g><text fill="#9cdbed" font-size="10" x="22" y="23">SMA 20 · VWAP · FIBONACCI · CYPHER</text></svg></div>
+<div aria-label="Platform, broker and installation compatibility" class="compat-strip"><span class="compat-label">COMPATIBILITY</span><span class="compat-pill ready">IBKR</span><span class="compat-pill testing">MT5 in development</span><span class="compat-pill ready">Yahoo backup</span><span class="compat-pill ready">Windows desktop</span><span class="compat-pill testing">32/64-bit compatible</span><span class="compat-pill install">ONE-CLICK INSTALL · NO PYTHON OR BROKER LIBRARIES TO SET UP</span><span class="compat-note">Broker live data requires subscriptions; Yahoo backup may be delayed. No Python installation or manual broker-library setup required with the packaged installer (pending release verification).</span></div></article><input id="controlCenterPick" type="checkbox"/></div></main><footer><div class="wrap">© Trading Bots · Trading software is experimental. Beta functionality and broker compatibility depend on the specific build. Paper trading does not guarantee live results.<p class="notice">One-click installers will be offered once the packages are verified; no manual Python or broker-library setup is intended. Download buttons remain inactive until then.</p></div></footer>
+<dialog aria-label="Product information" id="infoDialog"><div id="infoContent"></div><button class="close" id="closeDialog">CLOSE</button></dialog>
+<div hidden="" id="infoBank"><div class="modal-info" hidden="" id="info-minirsi"><h2>Mini RSI</h2><p>Start with RSI. Learn automated RSI signal trading with a simple paper-trading workflow.</p><p>This is a free introductory beta edition for learning and testing the workflow. A more full-featured version is planned for a later release.</p><ul><li>RSI-based signals</li><li>Paper trading</li><li>Trade and decision logs</li><li>Simple introductory settings</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-miniscalper"><h2>Mini Scalper</h2><p>Stage the trade yourself. Manual chart-based scalping tool for precise entries, protective stops and hands-on position management.</p><p>This is a free introductory beta edition for learning and testing the workflow. A more full-featured version is planned for a later release.</p><ul><li>Manual chart-based trade staging</li><li>Protective stops + position management</li><li>IBKR</li><li>Free introductory bot</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-ifthenbot"><h2>IF/Then Bot</h2><p>Build straightforward IF/THEN trade rules and run them as an individual trading tool.</p><p>This is a free introductory beta edition for learning and testing the workflow. A more full-featured version is planned for a later release.</p><ul><li>Rule-based IF/THEN logic</li><li>Custom trade conditions</li><li>IBKR</li><li>Free introductory bot</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-momentumbot"><h2>Momentum Bot</h2><p>Momentum meets autonomy. Scan and filter candidates, qualify a setup, then automate the opening long and confirmed reversal short cycle.</p><ul><li>Momentum scanner + candidate filters</li><li>Opening long / confirmed reversal short</li><li>Protective stops + trailing management</li><li>Live chart + activity updates</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-reversalbot"><h2>Reversal Bot</h2><p>Find the turn. Looks for reversal setups using RSI divergence and price confirmation.</p><ul><li>RSI divergence + confirmation</li><li>HAL Intelligence</li><li>Searchable local CSV trade history</li><li>IBKR</li><li>Free Beta / Premium upgrades</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-trendbot"><h2>Trend Bot</h2><p>Find the trend. Scans for sustained directional movement and qualifying trend opportunities.</p><ul><li>Trend-following strategy</li><li>HAL Intelligence</li><li><strong>HAL Think Box (Premium early beta):</strong> create custom pattern-based entry conditions, review rules, and explore plain-English trade ideas. Availability and supported execution depend on the bot build.</li><li>Searchable local CSV trade history</li><li>IBKR</li><li>Free Beta / Premium upgrades</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-zigzagbot"><h2>ZigZag Bot</h2><p>Trade the swings in between. Looks for price-structure opportunities between major trends and reversals.</p><ul><li>Price-structure strategy</li><li>HAL Intelligence</li><li><strong>HAL Think Box (Premium early beta):</strong> create custom pattern-based entry conditions, review rules, and explore plain-English trade ideas. Availability and supported execution depend on the bot build.</li><li>Searchable local CSV trade history</li><li>IBKR</li><li>Free Beta / Premium upgrades</li></ul><p class="caution">One-click Windows installation is the release goal: no need to install Python or broker libraries separately. Installer packaging is pending verification. IBKR TWS or Gateway and any required market-data subscriptions remain separate. Downloads will be enabled when verified packages are uploaded.</p></div><div class="modal-info" hidden="" id="info-ultimatescalper"><h2>Ultimate Scalper</h2><p>Trade and manage positions directly on the Advanced Chart. Stage long and short setups, edit entry and stop levels on the chart, and follow positions visually.</p><ul><li>Chart-based trade entry and order editing</li><li>Draggable entry, stop and target levels</li><li>Trailing stops and re-entry workflows</li><li>Advanced Chart tools and live P&amp;L</li><li>Real-time market data with price synchronization monitor: latest IBKR price versus chart's last received price</li></ul><p class="caution">Product preview. The video is an illustrative simulation; downloads will be added when a release is ready.</p></div><div class="modal-info" hidden="" id="info-soon0"><h2>Breakout Bot · Coming Soon</h2><p>Built to look for price breaking out of established ranges and qualifying breakout setups.</p><ul><li>Breakout strategy</li><li>HAL Intelligence</li><li>Coming Soon</li></ul></div><div class="modal-info" hidden="" id="info-soon1"><h2>Omni Bot · Coming Soon</h2><p>Multi-strategy trading bot designed to scan for and manage long and short trading opportunities.</p><ul><li>Multi-strategy long / short</li><li>HAL Intelligence</li><li>Platinum</li><li>Coming Soon</li></ul></div><div class="modal-info" hidden="" id="info-soon2"><h2>ZeRO Bot · Coming Soon</h2><p>Short-dated options trading bot focused on 0–3 DTE opportunities.</p><ul><li>0–3 DTE options</li><li>HAL Intelligence</li><li>Coming Soon</li></ul></div><div class="modal-info" hidden="" id="info-soon3"><h2>WheelBot · Coming Soon</h2><p>Options-focused bot built around the wheel strategy and position management.</p><ul><li>Options wheel strategy</li><li>Position management</li><li>Coming Soon</li></ul></div><div class="modal-info" hidden="" id="info-soon4"><h2>Dividend Bot · Coming Soon</h2><p>Dividend-focused automation and tracking tools for income-oriented portfolios.</p><ul><li>Dividend tracking</li><li>Income-focused automation</li><li>Coming Soon</li></ul></div>
+<div class="modal-info" id="info-chart"><h2>Advanced Chart — Live Trading &amp; Analysis</h2><p><strong>LIVE CLICK TRADING from the chart:</strong> plan LONG and SHORT entries visually, set bracket-order entry, stop-loss and take-profit levels, and work with live broker-connected pricing.</p><ul><li>Long / short chart trade plans and bracket order staging</li><li>Entry, stop and profit-target visualization</li><li>Adjust protective stops on the chart while managing an open position (where supported by the installed build and broker).</li><li>Live IBKR market data (subscription and broker connection required)</li><li>Fibonacci retracement and extension tools</li><li>Wyckoff analysis and harmonic XABCD pattern drawings</li><li>Trendlines, annotations and editable drawings</li><li>RSI, MACD, VWAP, moving averages and Bollinger Bands</li><li>Multi-timeframe analysis, zoom, pan and pop-out charts</li><li>Private local drawings and personal chart workspace</li></ul><p>Features, live order routing and broker support vary by installed beta build and edition. Chart-based trading is not the same as an autonomous trading bot. Confirm the order details and paper-test before live use.</p></div>
+<div class="modal-info" id="info-control"><h2>Control Panel</h2><p>Free desktop hub for launching and organizing installed Trading Bots tools. Download package will be linked after upload.</p></div>
+<div class="modal-info" id="info-thinkbox"><h2>HAL Think Box — Give Your Bot Custom Thinking</h2><p><strong>Two ways to customize your thinking:</strong> use the adaptive Custom Pattern Rule editor to define supported pattern-entry conditions, or experiment with the Plain English (Beta) tab by describing a trade idea in everyday language.</p><p><strong>Custom Pattern Rule:</strong> select a supported pattern and configure its measurements, including touches, swing confirmation, breakout closes, relative volume and trading-session limits. Where supported by the bot, saved and enabled pattern rules are evaluated before entries and may block trades that fail their conditions.</p><p><strong>Plain English (Beta):</strong> a limited local phrase interpreter recognizes selected pattern conditions and creates an editable JSON draft. Press Preview JSON to generate it, then edit the JSON yourself. This tab does not use an AI language model; it does not save, validate or submit the draft to the trading engine.</p><p>Explore the two screenshots in the HAL Think Box feature card. More patterns, language capabilities and customization are planned as they are built and tested. Feature availability varies by bot and edition. Pattern recognition and automation cannot guarantee trading results.</p></div>
+<div class="modal-info" id="info-hal"><h2>HAL Intelligence</h2><p>HAL is the configurable intelligence layer used by higher-level trading bots for signal evaluation and market-context checks. Modes and actual capabilities differ by bot, Free Beta and Premium release.</p></div>
+</div>
+<script>
+const dlg=document.getElementById('infoDialog'),content=document.getElementById('infoContent');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-info]');if(!b)return;const src=document.getElementById('info-'+b.dataset.info);if(!src)return;content.innerHTML=src.innerHTML+'<p class="install-footnote"><strong>ONE-CLICK INSTALL (planned):</strong> No need to install Python or broker libraries manually with the packaged Windows installer, once verified. Broker software and market-data access may still be required.</p>';dlg.showModal()});
+document.getElementById('closeDialog').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FT272GQ5T5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-FT272GQ5T5');</script><script>
+(function(){
+  const cards=[...document.querySelectorAll('.bot-card')];
+  const control=document.getElementById('controlCenterPick');
+  const list=document.getElementById('selectedList');
+  const summary=document.getElementById('selectionSummary');
+  const ready=document.getElementById('readyLabel');
+  const go=document.getElementById('continueSelection');
+  const checkout=document.getElementById('bitcoinCheckout');
+
+  function selections(){
+    const chosen=[];
+    cards.forEach(card=>{
+      const edition=card.querySelector('.edition:checked');
+      if(edition) chosen.push({name:card.dataset.bot, edition:edition.value});
+    });
+    if(control && control.checked) chosen.push({name:'Trading Bots Control Center', edition:'Control Panel'});
+    document.querySelectorAll('input.download-pick[data-local-free]:checked').forEach(p=>chosen.push({name:p.dataset.localFree,edition:'Free Beta'}));
+    return chosen;
+  }
+
+  function update(){
+    const chosen=selections();
+    if(!chosen.length){
+      list.innerHTML='<p>No bots selected yet.</p>';
+      summary.textContent='Choose a beta bot or add the free Control Center.';
+      ready.textContent='MAKE A SELECTION';
+      go.disabled=true;
+      checkout.style.display='none';
+      return;
+    }
+    const premiumCount=chosen.filter(x=>x.edition==='Premium').length;
+    const total=premiumCount*1;
+    list.innerHTML='<div class="download-cart-rows">'+chosen.map(x=>'<div class="download-cart-row"><span><strong>'+x.name+'</strong><small>'+ (x.edition==='Premium'?'Premium Beta':'Free Beta') +'</small></span><b>'+ (x.edition==='Premium'?'$1.00':'FREE') +'</b></div>').join('')+'</div><div class="download-cart-total"><strong>TOTAL</strong><strong>$'+total.toFixed(2)+' USD</strong></div>';
+    const premium=chosen.some(x=>x.edition==='Premium');
+    ready.textContent=premium?'PREMIUM SELECTED':'READY TO DOWNLOAD';
+    summary.textContent=premium
+      ? premiumCount+' Premium upgrade(s) × $1 USD = $'+total.toFixed(2)+' USD. Review payment instructions before checkout.'
+      : 'Your selected items do not require Bitcoin payment.';
+    go.disabled=false;
+    if(!premium) checkout.style.display='none';
+  }
+
+  document.querySelectorAll('.edition').forEach(el=>el.addEventListener('change',update));
+  document.querySelectorAll('input.download-pick[data-local-free]').forEach(el=>el.addEventListener('change',update));
+  if(control) control.addEventListener('change',update);
+
+  go.addEventListener('click',()=>{
+    const chosen=selections();
+    const premium=chosen.some(x=>x.edition==='Premium');
+    checkout.style.display=premium?'block':'none';
+    if(premium){
+      checkout.scrollIntoView({behavior:'smooth',block:'start'});
+    } else {
+      alert('Your free selections are saved in the download list. Installers will become available when their packages are verified and published.');
+    }
+  });
+
+  update();
+})();
+</script><script>
+const WORKER='https://falling-sky-7997.algobotbuilder.workers.dev';
+function currentPremiumTotal(){return document.querySelectorAll('input.download-pick[data-edition="Premium"]:checked').length*1 || [...document.querySelectorAll('.bot-card')].filter(c=>c.querySelector('.edition:checked')?.value==='Premium').length*1;}
+function quotedUsd(q){for(const key of ['total_usd','amount_usd','usd_amount','price_usd']){if(q[key]!==undefined && q[key]!==null && q[key]!=='')return Number(q[key]);}return null;}
+
+let quote=null, premiumKey='';
+const licensePattern=/^MBB-[A-F0-9]{8}(?:-[A-F0-9]{8}){7}$/i;
+const $=id=>document.getElementById(id);
+function setStatus(id,text,error=false){const el=$(id);el.textContent=text;el.className='status '+(error?'error':'');}
+async function installer(product,key=''){
+  const premium=product==='premium';
+  const r=await fetch(WORKER+'/'+(premium?'premium/download':'basic-reversal/download'),{
+    method:premium?'POST':'GET',
+    headers:premium?{'Content-Type':'application/json'}:{},
+    body:premium?JSON.stringify({license_key:key}):undefined,
+    cache:'no-store'
+  });
+  if(!r.ok){let msg='Download unavailable ('+r.status+').';try{const j=await r.json();msg=j.error||msg}catch(e){}throw Error(msg)}
+  const type=r.headers.get('content-type')||'';
+  if(type.includes('json')||type.includes('text/html'))throw Error('The server returned a page instead of the installer.');
+  const blob=await r.blob();if(!blob.size)throw Error('Installer download was empty.');
+  const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=premium?'Premium_Setup.exe':'Basic_Setup.exe';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);
+}
+
+
+function copyRow(label,value){
+  const row=document.createElement('div');row.className='copyrow';
+  const info=document.createElement('span');const strong=document.createElement('strong');strong.textContent=label+': ';const code=document.createElement('code');code.textContent=String(value);info.append(strong,code);
+  const b=document.createElement('button');b.type='button';b.textContent='Copy';b.onclick=()=>navigator.clipboard.writeText(String(value)).then(()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',1500)});
+  row.append(info,b);return row;
+}
+function renderQuote(q){
+  const el=$('quoteDetails');el.replaceChildren();
+  el.append(copyRow('Cart total (USD)','$'+q.cart_total_usd.toFixed(2)),copyRow('Receiving address',q.bitcoin_address),copyRow('Amount (BTC)',q.required_btc));
+  const p=document.createElement('p');p.className='fine';p.textContent='Send the exact amount shown. Quote expires '+new Date(q.expires_at).toLocaleString()+'. Quote ID: '+q.quote_id;el.append(p);
+}
+$('quoteBtn').onclick=async()=>{
+  $('paymentPanel').classList.add('show');setStatus('paymentStatus','Fetching signed quote…');
+  try{
+    const total=currentPremiumTotal();
+    if(!total)throw Error('Select at least one Premium upgrade first.');
+    if(total!==1)throw Error('The payment server currently supports one $1 Premium upgrade per transaction. Select one Premium upgrade to continue.');
+    quote=null;
+    const url=WORKER+'/premium/quote?amount_usd='+encodeURIComponent(total);
+    const r=await fetch(url,{cache:'no-store'}),q=await r.json();
+    if(!r.ok||!q.ok)throw Error(q.error||'Could not create quote');
+    const serverUsd=quotedUsd(q);
+    if(serverUsd===null && total!==1)throw Error('The payment server did not confirm the $'+total.toFixed(2)+' USD cart total. No Bitcoin amount can be safely issued for multiple upgrades until the Worker supports itemized totals.');
+    if(serverUsd!==null && (!Number.isFinite(serverUsd)||Math.abs(serverUsd-total)>0.001))throw Error('The server quoted $'+serverUsd+' USD but your cart totals $'+total.toFixed(2)+' USD. Payment blocked.');
+    quote=q;quote.cart_total_usd=total;
+    renderQuote(q);
+    setStatus('paymentStatus','Quote for $'+total.toFixed(2)+' USD. Send the exact BTC amount, then enter your TXID and verify.');
+  }
+  catch(e){setStatus('paymentStatus','Quote error: '+e.message,true)}
+};
+function verified(v){
+  const key=typeof v.license_key==='string'?v.license_key.trim().toUpperCase():'';
+  if(licensePattern.test(key)){premiumKey=key;$('licenseText').textContent=key;$('issuedLicense').hidden=false;$('premiumDownload').disabled=false;$('premiumDownload').hidden=false}
+  setStatus('paymentStatus','✓ Bitcoin payment verified. Save your original license key before downloading.');
+}
+$('verifyBtn').onclick=async()=>{
+  if(!quote){setStatus('paymentStatus','Generate a quote first.',true);return}if(quote.cart_total_usd!==currentPremiumTotal()){quote=null;setStatus('paymentStatus','Your Premium selection changed. Generate a fresh Bitcoin quote.',true);return}
+  const txid=$('txid').value.trim();if(!/^[a-fA-F0-9]{64}$/.test(txid)){setStatus('paymentStatus','Enter a valid 64-character TXID.',true);return}
+  setStatus('paymentStatus','Checking blockchain confirmation…');
+  try{const r=await fetch(WORKER+'/premium/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({txid,quote_id:quote.quote_id,quote_signature:quote.quote_signature,required_sats:quote.required_sats,expires_at:quote.expires_at})});const v=await r.json();if(!r.ok||!v.ok)throw Error(v.error||'Verification failed');if(v.verified)verified(v);else setStatus('paymentStatus','Payment status: '+v.status+'. '+(v.error||'Try again after confirmation.'))}
+  catch(e){setStatus('paymentStatus','Verification error: '+e.message,true)}
+};
+$('statusBtn').onclick=async()=>{
+  if(!quote){setStatus('paymentStatus','Generate a quote first.',true);return}if(quote.cart_total_usd!==currentPremiumTotal()){quote=null;setStatus('paymentStatus','Your Premium selection changed. Generate a fresh Bitcoin quote.',true);return}
+  try{const r=await fetch(WORKER+'/premium/status?quote_id='+encodeURIComponent(quote.quote_id),{cache:'no-store'}),v=await r.json();if(!r.ok||!v.ok)throw Error(v.error||'Status unavailable');if(v.verified||v.status==='verified')verified(v);else setStatus('paymentStatus','Payment status: '+v.status+'. Confirmed: '+v.confirmed+'; received: '+v.received_sats+' sats.')}
+  catch(e){setStatus('paymentStatus','Status error: '+e.message,true)}
+};
+$('copyLicense').onclick=()=>{if(premiumKey)navigator.clipboard.writeText(premiumKey).then(()=>setStatus('paymentStatus','License key copied. Store it securely.'))};
+$('premiumDownload').onclick=async()=>{try{await installer('premium',premiumKey);setStatus('paymentStatus','Premium installer download requested.')}catch(e){setStatus('paymentStatus',e.message,true)}};
+$('restoreBtn').onclick=async()=>{
+  const key=$('restoreKey').value.trim().toUpperCase();if(!licensePattern.test(key)){setStatus('restoreStatus','Enter your complete original Premium license key.',true);return}
+  const b=$('restoreBtn');$('restoredDownload').hidden=true;$('restoredDownload').disabled=true;b.disabled=true;setStatus('restoreStatus','Checking your license…');
+  try{const r=await fetch(WORKER+'/premium/recover',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({license_key:key})}),v=await r.json();if(!r.ok||!v.ok||!v.active)throw Error(v.error||'License not active');premiumKey=key;$('restoredDownload').disabled=false;$('restoredDownload').hidden=false;setStatus('restoreStatus','✓ Premium unlocked. No additional payment required.')}
+  catch(e){setStatus('restoreStatus','Restore failed: '+e.message,true)}
+  finally{b.disabled=false}
+};
+$('restoredDownload').onclick=async()=>{try{await installer('premium',premiumKey);setStatus('restoreStatus','Premium installer download requested.')}catch(e){setStatus('restoreStatus',e.message,true)}};
+</script><script id="beta-feature-download-config">
+/* All three featured beta buttons open checkout, not installer URLs. */
+const betaCheckoutProducts = {
+  advancedChart: { selector: '#advancedChartCard input.edition[value="Premium"]' },
+  openMomentumBot: { selector: '#momentumCard input.edition[value="Premium"]' },
+  miniScalper: { selector: '#miniScalperCard input.edition[value="Premium"]' }
+};
+document.querySelectorAll('[data-beta-download]').forEach(function(button){
+  button.removeAttribute('aria-disabled');
+  button.removeAttribute('onclick');
+  button.addEventListener('click',function(event){
+    event.preventDefault();
+    const product=betaCheckoutProducts[button.dataset.betaDownload];
+    const choice=product && document.querySelector(product.selector);
+    const next=document.getElementById('continueSelection');
+    if(!choice || !next){ console.error('Beta checkout selection unavailable',button.dataset.betaDownload);return; }
+    choice.checked=true;
+    choice.dispatchEvent(new Event('change',{bubbles:true}));
+    next.click();
+  });
+});
+</script><script id="cosmetic-cart-bridge">(function(){
+ const cart=document.getElementById('purchaseCart');
+ const control=document.getElementById('controlCenterPick');
+ const picks=[...document.querySelectorAll('input.download-pick')];
+ function syncFromLegacy(){
+   picks.forEach(p=>{
+     if(p.dataset.control){p.checked=!!(control&&control.checked);return;}
+     if(p.dataset.localFree)return;
+     const card=[...document.querySelectorAll('#legacyPurchaseSelectors .bot-card')].find(c=>c.dataset.bot===p.dataset.bot);
+     const radio=card&&[...card.querySelectorAll('input.edition')].find(i=>i.value===p.dataset.edition);
+     p.checked=!!(radio&&radio.checked);
+   });
+   const extras=picks.filter(p=>p.dataset.localFree&&p.checked).map(p=>p.dataset.localFree);
+   // Free Beta picks are rendered directly by the original cart update() listener.
+ }
+ picks.forEach(p=>p.addEventListener('change',()=>{
+   if(p.dataset.control){if(control){control.checked=p.checked;control.dispatchEvent(new Event('change',{bubbles:true}));}}
+   else if(!p.dataset.localFree){
+     const card=[...document.querySelectorAll('#legacyPurchaseSelectors .bot-card')].find(c=>c.dataset.bot===p.dataset.bot);
+     const radio=card&&[...card.querySelectorAll('input.edition')].find(i=>i.value===p.dataset.edition);
+     if(!radio){p.checked=false;alert('This product is not connected to the original checkout.');return;}
+     if(p.checked){radio.checked=true;}else if(radio.checked){radio.checked=false;}
+     radio.dispatchEvent(new Event('change',{bubbles:true}));
+   }
+   syncFromLegacy();
+ }));
+ document.querySelectorAll('#legacyPurchaseSelectors .edition').forEach(r=>r.addEventListener('change',syncFromLegacy));
+ if(control)control.addEventListener('change',syncFromLegacy);
+ document.getElementById('openRecovery').addEventListener('click',()=>{
+   const checkout=document.getElementById('bitcoinCheckout');checkout.style.display='block';checkout.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('restoreKey').focus({preventScroll:true});
+ });
+ syncFromLegacy();
+})();</script><dialog aria-label="Screenshot enlarged view" id="shotZoom"><div class="zoom-toolbar"><button id="closeShotZoom" type="button">✕ Close</button></div><img alt="Enlarged software screenshot" id="zoomedShot"/></dialog><script>(function(){const dlg=document.getElementById('shotZoom'),pic=document.getElementById('zoomedShot');document.querySelectorAll('#chart .fullsize-shot,#control .fullsize-shot,#chart .chart-thumb-strip a').forEach(a=>{a.setAttribute('title','Click to enlarge here');a.addEventListener('click',e=>{e.preventDefault();const im=a.querySelector('img');pic.src=im.src;pic.alt=im.alt||a.textContent.trim()||'Enlarged software screenshot';dlg.showModal();});});document.getElementById('closeShotZoom').addEventListener('click',()=>dlg.close());dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});dlg.addEventListener('close',()=>pic.removeAttribute('src'));})();</script><script id="btm-download-guard">(function(){const button=document.getElementById('btmDownload'),status=document.getElementById('btmDownloadStatus');if(!button||!status)return;button.addEventListener('click',function(){status.hidden=false;status.scrollIntoView({behavior:'smooth',block:'nearest'});});})();</script><dialog aria-label="Bot animated demonstration" id="botDemoDialog"><div class="bot-demo-toolbar"><span id="botDemoTitle">Animated Demo</span><button aria-label="Close video" class="bot-demo-close" type="button">✕ CLOSE</button></div><video controls="" id="botDemoPlayer" playsinline="" preload="none"></video><p class="bot-demo-disclaimer">Illustrative animated simulation only — not actual software footage, live execution, or verified performance.</p></dialog><script id="bot-demo-launch-script">
+(()=>{const dlg=document.getElementById('botDemoDialog'),player=document.getElementById('botDemoPlayer'),title=document.getElementById('botDemoTitle');
+if(!dlg||!player)return;
+document.querySelectorAll('.bot-demo-thumb').forEach(btn=>btn.addEventListener('click',()=>{
+  title.textContent=btn.dataset.title||'Animated Demo';
+  player.src=btn.dataset.video;
+  if(typeof dlg.showModal==='function')dlg.showModal();else dlg.setAttribute('open','');
+  player.play().catch(()=>{});
+}));
+const stop=()=>{player.pause();player.removeAttribute('src');player.load();};
+dlg.addEventListener('close',stop);
+dlg.querySelector('.bot-demo-close').addEventListener('click',()=>{if(typeof dlg.close==='function')dlg.close();else{dlg.removeAttribute('open');stop();}});
+})();
+</script>
+<script id="bot-category-info-toggle-20261105">
+document.querySelectorAll('[data-category-info]').forEach(function(button){
+  button.addEventListener('click',function(){
+    var panel=document.getElementById(button.getAttribute('aria-controls'));
+    if(!panel)return;
+    var opening=panel.hidden;
+    panel.hidden=!opening;
+    button.setAttribute('aria-expanded',String(opening));
+  });
+});
+</script>
+<script id="traderrepos-logo-typing">(function(){const logo=document.querySelector('.tr-logo'),el=logo?.querySelector('.tr-wordmark-muted');if(!el)return;const value=el.dataset.text;if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=value;return;}let i=0;setTimeout(function type(){el.textContent=value.slice(0,++i);if(i<value.length)setTimeout(type,150);},800);})();</script></body></html>
