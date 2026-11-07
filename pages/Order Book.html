@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order Book | Trader Repository</title><link href="../assets/favicon.png" rel="icon" type="image/png">
+<link href="../product-theme.css" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b111c;color:#e6edf3;font:15px/1.6 system-ui,Segoe UI,sans-serif}a{color:#65c5ef;text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+header{background:#0e1826;border-bottom:1px solid #293b50}.head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 0;flex-wrap:wrap}.brand{font-weight:800;font-size:20px;color:#e6edf3}.brand b{color:#31c6e8}.nav{display:flex;gap:18px;font-size:13px}.eyebrow{font:12px ui-monospace,monospace;color:#6ac9e8;letter-spacing:.08em;margin-top:30px}
+h1{font-size:clamp(30px,5vw,44px);margin:6px 0 8px}h2{font-size:22px;margin:0 0 12px}p{color:#b5c8d7}.badge{display:inline-block;padding:5px 10px;border:1px solid #41a673;border-radius:5px;background:#173e2b;color:#b3f5d0;font:700 11px ui-monospace,monospace;letter-spacing:.08em}
+.lead{max-width:850px;font-size:17px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.feature,.gallery{border:1px solid #30475c;border-radius:12px;background:#111f2e;padding:20px}.feature h3{margin:0 0 7px;font-size:16px}.feature p{margin:0;font-size:13px}.gallery{margin:28px 0 48px}.gallery video{display:block;width:100%;height:auto;background:#05090d;border:1px solid #34495a;border-radius:9px}.caption{color:#9cb3c5;font-size:13px;margin-top:10px}.note{color:#8da9b9;font-size:12px}footer{border-top:1px solid #293b50;padding:24px 0;color:#849bad;font-size:12px}
+@media(max-width:680px){.features{grid-template-columns:1fr}.gallery{padding:14px}}
+</style></head><body>
+<header><div class="wrap head"><a class="brand" href="../index.html"><b>&lt;/&gt;</b> trader repository</a><nav class="nav"><a href="../index.html">Repository</a><a href="../basic.html">Checkout</a><a href="../packages.html">Packages</a></nav></div></header>
+<main class="wrap"><div class="eyebrow">REPOSITORY / PRODUCTS / ORDER BOOK</div>
+<h1>Order Book</h1><span class="badge">BETA · VISUAL ORDER-TICKET EDITOR</span>
+<p class="lead">Build a complete order plan directly on a price chart. Arrange staged entries, hard stops, trailing-stop triggers and profit targets by dragging price levels instead of filling out separate tickets.</p>
+<div class="features"><div class="feature"><h3>Visual order planning</h3><p>Adjust long and short order levels directly on the candlestick chart, with ticket prices alongside the chart.</p></div><div class="feature"><h3>Entry and exit management</h3><p>Configure scaled entries, protective stops, trailing triggers and take-profit levels in one view.</p></div><div class="feature"><h3>IBKR connection</h3><p>Connect to Interactive Brokers for market-price reference while reviewing and preparing your orders.</p></div></div>
+<section class="gallery" aria-label="Order Book video gallery"><h2>Video gallery</h2><p>Watch Order Book in action. Play the demonstration below or expand it to fullscreen.</p>
+<video controls preload="metadata" playsinline aria-label="Order Book demonstration"><source src="../videos/orderbook-Screen Recording 2026-11-07 042405.mp4" type="video/mp4">Your browser does not support MP4 video.</video>
+<div class="caption">Order Book — Visual ticket editor demonstration</div></section>
+<p class="note">Beta development build: broker order submission remains disabled while ticket and order-line validation is tested.</p></main>
+<footer><div class="wrap">Trader Repository · Trading software repository</div></footer></body></html>
